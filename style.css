@@ -1,0 +1,594 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #0f0f0f;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #101c10;
+  border-bottom: 1px solid #1f1f1f;
+  position: relative; /* Needed for mobile nav positioning */
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #00ff88;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-links li a:hover {
+  color: #00ff88;
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background-color: #00ff88;
+}
+
+.nav-mobile {
+  display: none;
+  flex-direction: column;
+  background-color: #101c10;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  border-top: 1px solid #1f1f1f;
+  animation: slideDown 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+.nav-mobile a {
+  padding: 1rem;
+  text-align: center;
+  color: #ffffff;
+  text-decoration: none;
+  border-bottom: 1px solid #1f1f1f;
+  transition: background 0.3s;
+}
+
+.nav-mobile a:hover {
+  background-color: #0a1a0a;
+  color: #00ff88;
+}
+
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+main {
+  flex: 1;
+  padding: 2rem 0; /* Base top/bottom padding */
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #101c10;
+  color: #cccccc;
+  font-size: 0.9rem;
+}
+
+main section {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    max-width: 1000px; /* Center content within sections */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem; /* Internal padding for section content */
+    padding-right: 1rem; /* Internal padding for section content */
+}
+
+/* Generic Section Title Style (applied via h2 tag within sections) */
+main section h2 {
+    font-size: 2rem;
+    color: #00ff88;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+
+.profile-section {
+  text-align: center;
+}
+
+.profile-section .profile-content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.profile-section img {
+  display: block;
+  margin: 0;
+  order: 1;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #00ff88;
+  box-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
+}
+
+.profile-section .profile-text {
+  text-align: center;
+  order: 2;
+}
+
+.profile-section .profile-text h1 {
+  font-size: 2.5rem;
+  color: #00ff88;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.profile-section .profile-text p {
+  font-size: 1.2rem;
+  color: #cccccc;
+  text-align: center;
+}
+
+.profile-section .social-links-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 2rem; /* Adjust gap between icons if needed */
+    flex-wrap: wrap;
+}
+
+.profile-section .social-links-list li a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 1.3rem; /* Increase icon size slightly */
+    transition: color 0.3s ease;
+    display: inline-flex; /* Helps center icon vertically if needed */
+    align-items: center; /* Helps center icon vertically if needed */
+}
+
+.profile-section .social-links-list li a:hover {
+    color: #00ff88;
+}
+
+.profile-section .social-links-list li a i {
+    color: inherit; /* Icon color inherits from link */
+    transition: color 0.3s ease;
+    vertical-align: middle; /* Better alignment */
+}
+
+
+.about-skills-container {
+    /* Styles applied within media query for larger screens */
+    margin-bottom: 3rem; /* Default bottom margin */
+}
+
+.skills-section {
+    text-align: center;
+}
+
+/* Skills Section Title uses generic section h2 */
+
+.skill-carousel {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    padding-bottom: 1rem;
+    scrollbar-width: thin;
+    scrollbar-color: #00ff88 #1a1a1a;
+}
+
+.skill-carousel::-webkit-scrollbar {
+    height: 8px;
+}
+
+.skill-carousel::-webkit-scrollbar-track {
+    background: #1a1a1a;
+    border-radius: 10px;
+}
+
+.skill-carousel::-webkit-scrollbar-thumb {
+    background: #00ff88;
+    border-radius: 10px;
+}
+
+.skill-carousel::-webkit-scrollbar-thumb:hover {
+    background: #00cc66;
+}
+
+.skills-section .skill-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start; /* Keep left align for scrolling */
+    flex-wrap: nowrap; /* Ensure items stay in one line for scroll */
+    gap: 0.8rem;
+    padding: 0 1rem; /* Padding for visual spacing at ends */
+}
+
+.skills-section .skill-list li {
+    flex-shrink: 0; /* Prevent shrinking */
+    background-color: #1a1a1a;
+    color: #00ff88;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    border: 1px solid #00ff88;
+    white-space: nowrap; /* Keep text on one line */
+}
+
+.about-section {
+    /* No specific styles needed, uses defaults */
+}
+
+/* About Section Title uses generic section h2 */
+
+.about-section p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #cccccc;
+    text-align: center; /* Default alignment */
+}
+
+.project-section {
+    /* No specific styles needed, uses defaults */
+}
+
+/* Project Section Title uses generic section h2 */
+
+.project-section p {
+    /* Currently just placeholder text styling */
+     text-align: center;
+     color: #cccccc;
+}
+
+/* --- Statistics Section Styles --- */
+.statistics-section {
+    text-align: center;
+}
+
+/* Statistics Title uses generic section h2 */
+
+.stats-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+    justify-content: center; /* Center items horizontally */
+    gap: 2rem 3rem; /* Row gap and Column gap */
+    margin-top: 2.5rem; /* Space below the title */
+}
+
+.stat-item {
+    text-align: center;
+    min-width: 150px; /* Minimum width for each stat block */
+    flex-basis: 150px; /* Suggested starting width */
+    flex-grow: 1; /* Allow items to grow if space allows */
+    padding: 0.5rem; /* Some internal spacing */
+}
+
+.stat-number {
+    display: block; /* Make it a block to take full width */
+    font-size: 2.8rem; /* Large font size for the number */
+    font-weight: bold;
+    color: #00ff88; /* Use accent color */
+    margin-bottom: 0.5rem; /* Space between number and label */
+    line-height: 1.1;
+}
+
+.stat-label {
+    font-size: 1rem;
+    color: #cccccc;
+    line-height: 1.4;
+}
+/* --- End Statistics Section Styles --- */
+
+.contact-section {
+    text-align: center;
+}
+
+/* Contact Title uses generic section h2 */
+
+.email-display-box {
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 1.5rem 2rem;
+    max-width: 500px;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.email-display-box p {
+    font-size: 1.1rem;
+    color: #cccccc;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+}
+
+.email-display-box p:last-child {
+    margin-bottom: 0;
+}
+
+.email-display-box .email-address {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.email-display-box .email-address a {
+    color: #00ff88;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.email-display-box .email-address a:hover {
+    color: #00cc66;
+    text-decoration: underline;
+}
+
+.section-separator {
+    border: none;
+    height: 1px;
+    background-color: #333;
+    margin: 3rem auto;
+    width: 100%;
+    max-width: 1000px;
+    opacity: 0.5;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+   /* --- Existing Responsive Nav Styles --- */
+   .nav-links {
+     display: none;
+   }
+   .menu-toggle {
+     display: flex;
+   }
+   .nav-mobile.show {
+     display: flex;
+   }
+   /* --- End Existing Responsive Nav --- */
+
+   /* Adjust section padding and max-width for mobile */
+   main section {
+       padding-top: 1.5rem;
+       padding-bottom: 1.5rem;
+       padding-left: 0.8rem;
+       padding-right: 0.8rem;
+       max-width: 100%;
+   }
+
+   /* Ensure these sections don't exceed viewport width */
+   .about-section,
+   .skills-section,
+   .project-section,
+   .statistics-section, /* Include new section */
+   .contact-section {
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+   }
+
+   /* Adjust section title size for mobile */
+    main section h2 {
+        font-size: 1.7rem;
+        margin-bottom: 1.5rem;
+    }
+
+  /* Profile section adjustments */
+  .profile-section img {
+    width: 140px;
+    height: 140px;
+  }
+
+  .profile-section .profile-text h1 {
+    font-size: 2rem;
+  }
+
+  .profile-section .profile-text p {
+    font-size: 1rem;
+  }
+
+  .profile-section .social-links-list {
+    gap: 1.5rem;
+    margin-top: 0;
+  }
+
+   .profile-section .social-links-list li a {
+    font-size: 1.2rem; /* Adjust icon size for mobile if needed */
+   }
+
+   /* About/Skills Container */
+   .about-skills-container {
+       margin-bottom: 2rem;
+   }
+
+   /* Skills section adjustments */
+   .skills-section .skill-list {
+        padding: 0 0.8rem; /* Consistent padding */
+   }
+
+    .skills-section .skill-list li {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+   /* About section adjustments */
+   .about-section p {
+        font-size: 1rem;
+   }
+
+   /* Statistics section adjustments for mobile */
+    .stats-container {
+        gap: 1.5rem; /* Slightly smaller gap on mobile */
+        margin-top: 2rem;
+    }
+
+    .stat-number {
+        font-size: 2.2rem; /* Slightly smaller number on mobile */
+    }
+
+    .stat-label {
+        font-size: 0.9rem; /* Slightly smaller label on mobile */
+    }
+
+   /* Separator adjustments */
+   .section-separator {
+        margin: 2rem auto;
+        max-width: calc(100% - 1.6rem); /* Match section padding */
+        padding-left: 0;
+        padding-right: 0;
+   }
+
+   /* Contact section adjustments */
+   .email-display-box {
+        max-width: 90%;
+        padding: 1rem 1.5rem;
+   }
+    .email-display-box p {
+        font-size: 1rem;
+    }
+    .email-display-box .email-address {
+        font-size: 1.1rem;
+        word-break: break-all;
+    }
+}
+
+/* --- Desktop Specific Styles --- */
+@media (min-width: 769px) {
+
+    /* Add horizontal padding to the main container on larger screens */
+    main {
+        padding-left: 3rem; /* Adjust this value as needed */
+        padding-right: 3rem; /* Adjust this value as needed */
+    }
+
+    /* Profile section layout adjustments */
+    .profile-section .profile-content-container {
+      flex-direction: row;
+      justify-content: center;
+      gap: 3rem;
+      align-items: center; /* Vertically align image and text */
+    }
+
+    .profile-section .profile-text {
+      order: 1;
+      text-align: left;
+      flex-shrink: 0;
+      max-width: 600px;
+    }
+
+    .profile-section img {
+      order: 2;
+      flex-shrink: 0;
+    }
+
+    .profile-section .profile-text h1,
+    .profile-section .profile-text p {
+       text-align: left; /* Align text left on larger screens */
+    }
+
+    /* About & Skills side-by-side layout */
+    .about-skills-container {
+        display: flex;
+        flex-direction: row;
+        gap: 3rem;
+        align-items: flex-start; /* Align tops */
+        max-width: 1000px; /* Max width of the combined container */
+        margin: 0 auto; /* Center container */
+        padding: 0; /* Remove padding from container, sections handle internal */
+        margin-bottom: 0; /* Reset bottom margin */
+    }
+
+    .about-skills-container > section {
+        flex: 1; /* Allow sections to share space */
+        margin: 0; /* Reset margins */
+        /* Use the base section padding */
+        padding-left: 1rem;
+        padding-right: 1rem;
+        max-width: none; /* Remove max-width constraint within flex container */
+    }
+
+    .about-skills-container .about-section h2,
+    .about-skills-container .about-section p {
+         text-align: left; /* Align About text left */
+    }
+
+    .about-skills-container .skills-section h2 {
+         text-align: left; /* Align Skills title left */
+    }
+
+    /* Skill list wrapping on desktop */
+    .about-skills-container .skills-section .skill-carousel {
+        overflow-x: visible; /* No scroll needed */
+        padding-bottom: 0;
+    }
+
+    .about-skills-container .skills-section .skill-list {
+        flex-wrap: wrap; /* Allow skills to wrap */
+        justify-content: flex-start; /* Align wrapped items to start */
+        padding: 0; /* Reset padding */
+    }
+
+    .about-skills-container .skills-section .skill-list li {
+        white-space: normal; /* Allow text wrapping inside skill items */
+        flex-shrink: 1; /* Allow shrinking if needed */
+        min-width: 0; /* Allow shrinking below content size */
+    }
+
+     /* Hide horizontal scroll hint on desktop */
+     .skills-section p[style*="Scroll horizontally"],
+     .about-skills-container .skills-section .skill-carousel + p {
+          display: none;
+     }
+}

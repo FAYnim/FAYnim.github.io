@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FAY_Motion Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="base.css" />
+  <link rel="stylesheet" href="header.css" />
+  <link rel="stylesheet" href="sections.css" />
+  <link rel="stylesheet" href="footer.css" />
+  <link rel="stylesheet" href="responsive.css" />
+</head>
+<body>
+
+  <header>
+    <div class="logo">FAY_Motion</div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#about">About me</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#project">Project</a></li>
+        <li><a href="#statistics">Statistics</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="menu-toggle" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+    <div class="nav-mobile" id="mobileMenu">
+      <a href="#about">About me</a>
+      <a href="#skills">Skills</a>
+      <a href="#project">Project</a>
+      <a href="#statistics">Statistics</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="profile-section">
+      <div class="profile-content-container">
+        <img src="FAY_Motion.png" alt="Profile picture of FAY">
+        <div class="profile-text">
+          <h1>Hello, I'm FAY</h1>
+          <p>Fullstack Developer, IoT Developer, Animator, AI Enthusiast</p>
+        </div>
+      </div>
+      <ul class="social-links-list">
+          <li>
+              <a href="https://www.instagram.com/fay_motion" target="_blank" rel="noopener noreferrer" aria-label="Instagram Profile">
+                  <i class="fab fa-instagram"></i>
+              </a>
+          </li>
+          <li>
+               <a href="https://www.threads.net/@fay_motion" target="_blank" rel="noopener noreferrer" aria-label="Threads Profile">
+                  <i class="fab fa-threads"></i>
+              </a>
+          </li>
+          <li>
+              <a href="https://github.com/FAYnim" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
+                  <i class="fab fa-github"></i>
+              </a>
+          </li>
+      </ul>
+    </section>
+
+    <hr class="section-separator">
+
+    <div class="about-skills-container">
+      <section id="about" class="about-section">
+          <h2>About Me</h2>
+          <p>
+              I am a Website Developer, Bot Developer, and AI Enthusiast who has been learning
+              in the field of technology since the age of 13.
+          </p>
+      </section>
+
+      <section id="skills" class="skills-section">
+          <h2>My Skills</h2>
+          <div class="skill-carousel">
+              <ul class="skill-list">
+                  <li>Fullstack Development</li>
+                  <li>Backend Development</li>
+                  <li>Frontend Development</li>
+                  <li>API Design</li>
+                  <li>Database Management</li>
+                  <li>IoT (Internet of Things)</li>
+                  <li>Bot Development</li>
+              </ul>
+          </div>
+          <p style="font-size: 0.8rem; color: #888; margin-top: 0.5rem; text-align: center;">Scroll horizontally to see all skills</p>
+      </section>
+    </div>
+
+    <hr class="section-separator">
+
+    <section id="project" class="project-section">
+        <h2>My Projects</h2>
+        <p style="text-align: center; color: #cccccc;">Project list coming soon!</p>
+    </section>
+
+    <hr class="section-separator">
+
+    <section id="statistics" class="statistics-section">
+        <h2>Statistics</h2>
+        <div class="stats-container">
+            <div class="stat-item">
+                <span class="stat-number" data-target="1" data-text="1">0</span>
+                <p class="stat-label">Projects Completed</p>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="32" data-text="32">0</span>
+                <p class="stat-label">Followers</p>
+            </div>
+        </div>
+    </section>
+
+    <hr class="section-separator">
+
+    <section id="contact" class="contact-section">
+        <h2>Get in Touch</h2>
+        <div class="email-display-box">
+            <p>You can reach me directly via email:</p>
+            <p class="email-address">
+                <a href="mailto:yuana6898@gmail.com">yuana6898@gmail.com</a>
+            </p>
+        </div>
+    </section>
+
+  </main>
+
+  <footer>
+    Made with ❤️ by FAY
+  </footer>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
