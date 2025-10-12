@@ -166,11 +166,11 @@ section {
   /* box-shadow: -2px -2px 15px 2px #32cd32, 2px 2px 15px 4px #00ffff; */
   animation: logo-spin 5s linear infinite;
 }
-#hello-msg span::before {
+#hello-msg #profession::before {
   content: "Fullstack Developer";
   animation: switch-profession 8s infinite;
 }
-#hello-msg span:after {
+#hello-msg #profession:after {
   content: "";
 }
 @keyframes switch-profession {
