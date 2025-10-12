@@ -1,594 +1,652 @@
+/* --- PENGATURAN GLOBAL & RESET DASAR --- */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-sizing: border-box
 }
-
+html {
+  scroll-behavior: smooth;
+}
 body {
-  background-color: #0f0f0f;
-  color: #ffffff;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: #121212;
+  color: #e0e0e0;
+}
+a {
+  text-decoration: none;
+  color: #32cd32; /* Lime Green */
+}
+p {
+  font-size: 16px;
+}
+h1 a {
+  color: #fff;
+}
+button{
+    cursor: pointer;
+}
+section {
+  min-height: 400px;
+  padding-top: 50px;
+  opacity: 0;
+  /* transform: translateY(50px); */
+  /* transition: opacity 0.5s ease-out, transform 0.5s ease-out; */
+  transition: opacity 0.5s ease-out;
+}
+section.visible {
+  opacity: 1;
+  /* transform: translateY(0); */
 }
 
+section#bio {
+  transform: translateY(0);
+}
+
+/* === UTILITIES === */
+.highlight-text {
+  color: #32cd32;
+}
+
+.section-title {
+  font-size: 40px;
+  padding-left: 10px;
+  border-left: 3px solid #32cd32;
+  background: linear-gradient(to right, #1a2a1a, #121212);
+  color: #fff;
+}
+
+#welcome-msg {
+  font-size: 50px; color: #fff; padding-left: 100px; padding-top: 100px;
+}
+
+/* === HEADER & NAVIGASI === */
 header {
+  color: #fff;
+  padding: 5px 100px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
-  background-color: #101c10;
-  border-bottom: 1px solid #1f1f1f;
-  position: relative; /* Needed for mobile nav positioning */
+  width: 100%;
+  position: sticky;
+  top: 0;
+  left: 0;
+  backdrop-filter: blur(5px);
+  z-index: 999;
 }
-
-.logo {
-  font-size: 1.5rem;
+header nav ul {
+  padding-inline-start: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+header nav li {
+  list-style: none;
+  display: inline-block;
+  margin: 0 10px;
+}
+header nav a {
+  color: #fff;
   font-weight: bold;
-  color: #00ff88;
+  transition: color 0.3s ease-in-out, border-bottom 0.1s ease-in-out;
+}
+header nav a:hover {
+  color: #32cd32;
+  border-bottom: 2px solid #32cd32;
 }
 
-nav {
+header .logo-container {
   display: flex;
   align-items: center;
+  gap: 10px;
 }
 
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 1.5rem;
+header #logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  /* box-shadow: -2px -2px 10px 2px #32cd32, 2px 2px 10px 4px #00ffff; */
+  animation: logo-spin 3s linear infinite;
 }
 
-.nav-links li a {
-  text-decoration: none;
-  color: #ffffff;
-  font-weight: 500;
-  transition: color 0.3s;
-}
-
-.nav-links li a:hover {
-  color: #00ff88;
-}
-
-.menu-toggle {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-  gap: 5px;
-}
-
-.menu-toggle span {
-  width: 25px;
-  height: 3px;
-  background-color: #00ff88;
-}
-
-.nav-mobile {
-  display: none;
-  flex-direction: column;
-  background-color: #101c10;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  border-top: 1px solid #1f1f1f;
-  animation: slideDown 0.3s ease-in-out;
-  z-index: 1000;
-}
-
-.nav-mobile a {
-  padding: 1rem;
-  text-align: center;
-  color: #ffffff;
-  text-decoration: none;
-  border-bottom: 1px solid #1f1f1f;
-  transition: background 0.3s;
-}
-
-.nav-mobile a:hover {
-  background-color: #0a1a0a;
-  color: #00ff88;
-}
-
-@keyframes slideDown {
+@keyframes logo-spin {
   0% {
-    opacity: 0;
-    transform: translateY(-10px);
+    box-shadow: -2px -2px 10px 2px #32cd32, 2px 2px 10px 4px #00ffff;
+  }
+  50% {
+    box-shadow: 2px 2px 10px 2px #32cd32, -2px -2px 10px 4px #00ffff;
   }
   100% {
-    opacity: 1;
-    transform: translateY(0);
+    box-shadow: -2px -2px 10px 2px #32cd32, 2px 2px 10px 4px #00ffff;
   }
 }
-
-main {
-  flex: 1;
-  padding: 2rem 0; /* Base top/bottom padding */
-}
-
-footer {
-  text-align: center;
-  padding: 1rem;
-  background-color: #101c10;
-  color: #cccccc;
-  font-size: 0.9rem;
-}
-
-main section {
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-    max-width: 1000px; /* Center content within sections */
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 1rem; /* Internal padding for section content */
-    padding-right: 1rem; /* Internal padding for section content */
-}
-
-/* Generic Section Title Style (applied via h2 tag within sections) */
+/* --- STRUKTUR UTAMA (MAIN & SECTION) --- */
 main section h2 {
-    font-size: 2rem;
-    color: #00ff88;
-    margin-bottom: 2rem;
-    text-align: center;
+  color: #32cd32;
+}
+section {
+  min-height: 400px;
+  padding-top: 50px;
+  opacity: 0;
+  /* transform: translateY(50px); */
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+.normal-section {
+  padding: 75px 100px 50px;
+}
+.normal-section#about-me {
+  padding: 25px 100px 50px;
 }
 
-
-.profile-section {
-  text-align: center;
+/* === BAGIAN BIO (#bio) === */
+#bio {
+  display: flex;
+  height: 80vh;
+  padding-top: 0;
+}
+#bio .left-column {
+  width: 50%;
+  padding: 10px 0 10px 100px;
+  display: flex;
+  align-items: center;
+}
+#bio .right-column {
+  width: 50%;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#hello-msg {
+  color: #e0e0e0;
+  font-size: 55px;
+}
+#profile-photo {
+  width: 300px;
+  height: 300px;
+  border: 3px solid #32cd32;
+  border-radius: 15px;
+  /* box-shadow: -2px -2px 15px 2px #32cd32, 2px 2px 15px 4px #00ffff; */
+  animation: logo-spin 5s linear infinite;
+}
+#hello-msg span::before {
+  content: "Fullstack Developer";
+  animation: switch-profession 8s infinite;
+}
+#hello-msg span:after {
+  content: "";
+}
+@keyframes switch-profession {
+  0% { content: "Fullstack Developer"; }
+  25% { content: "IoT Engineer"; }
+  50% { content: "Pentester"; }
+  75% { content: "Tech Enthusiast"; }
 }
 
-.profile-section .profile-content-container {
+/* --- BAGIAN TOMBOL "KNOW MORE" --- */
+#know-more {
+  height: auto;
+  min-height: auto;
+  padding: 0 100px 10px;
+  transform: translateY(-50px);
+}
+.btn-know-more {
+  border: none;
+  padding: 14px 18px; 
+  background-color: #0b700b;
+  border: 2px solid #0b700b;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  margin-right: 10px;
+  border-radius: 50px;
+  transition: background-color 0.3s;
+}
+.btn-know-more:hover {
+  background-color: inherit;
+  color: #32cd32;
+  box-shadow: 2px 2px 5px #00ffff, -2px -2px 5px #32cd32;
+}
+.btn-know-more a {
+  color: inherit;
+}
+
+/* --- BAGIAN ABOUT ME & SKILLS (#about-me) --- */
+.about-me-container {
+  display: flex;
+  border: 1px solid #444;
+  padding: 10px 15px;
+  border-radius: 5px;
+  background: #222;
+}
+.about-me-box {
+  width: 50%;
+}
+.about-me-box:nth-child(1) {
+  padding-right: 25px;
+  text-align: justify;
+}
+.about-me-box:nth-child(2) {
+  /* border: 1px solid #fff; */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.about-me-box:nth-child(2) div {
+  width: 49%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: 1.5rem;
+  border: 1px solid #444;
+  background: #1e1e1e;
+  border-radius: 5px;
+  box-shadow: 2px 2px 0 #444;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+.about-me-box:nth-child(2) div:hover {
+  box-shadow: 0 0 0 #444;
+  transform: translate(2px, 2px);
+}
+.about-me-title {
+  font-weight: bold;
+  margin-bottom: 2.5px;
+  font-size: 20px;
+}
+.about-me-text {
+  color: #32cd32;
+  font-size: 24px;
+}
+.about-me-number {
+  color: #32cd32;
+  font-size: 30px;
+}
+
+.skill-container {
   width: 100%;
-  margin-bottom: 1.5rem;
+  background-color: #121212;
+  border-right: 2px solid #444;
+  border-left: 2px solid #444;
+  overflow: hidden; /* Sembunyikan item yang keluar dari kontainer */
+  white-space: nowrap; /* Pastikan semua item dalam satu baris */
+  position: relative; /* Diperlukan untuk elemen child */
+}
+.skill-container:hover .skill-track {
+  animation-play-state: paused; /* Jeda animasi saat kursor di atasnya */
+}
+.skill-track {
+  display: inline-block; /* Membuat track menjadi elemen inline yang bisa dianimasikan */
+  animation: scroll 15s linear infinite; /* Terapkan animasi scroll */
+}
+.skill-box {
+  display: inline-flex; /* Atur item skill agar berjajar ke samping */
+  align-items: center;
+  flex-direction: column;
+  padding: 15px 50px; /* Beri jarak antar item skill */
+  border: 2px solid #444;
+  box-shadow: 10px 10px #1e1e1e;
+  margin: 10px;
+  border-radius: 5px;
+  background: #1e1e1e
 }
 
-.profile-section img {
-  display: block;
-  margin: 0;
-  order: 1;
-  width: 180px;
-  height: 180px;
+@keyframes scroll {
+  from {
+    transform: translateX(0); /* Mulai dari posisi awal */
+  }
+  to {
+    transform: translateX(-50%); /* Geser ke kiri sejauh setengah lebar total (karena konten diduplikasi) */
+  }
+}
+
+/* --- BAGIAN EDUKASI (#education) --- */
+.education-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.education-box {
+  width: 49%;
+  border: 2px solid #444;
+  border-radius: 15px;
+  background: #1e1e1e;
+  padding: 10px 20px;
+}
+.education-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* === BAGIAN PROYEK (#project) === */
+
+.project-carousel-container {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden; /* Menyembunyikan proyek lain */
+  border: 1px solid #444;
+  border-radius: 15px;
+  background-color: #1e1e1e;
+}
+
+.project-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out; /* Animasi geser */
+}
+
+.project-box {
+  min-width: 100%; /* Setiap proyek mengambil lebar penuh container */
+  box-sizing: border-box;
+  padding: 10px;
+  text-align: center;
+}
+
+.project-box button {
+  width: 75px;
+  height: auto;
+  border-radius: 15px;
+  outline: none;
+  padding: 5px 10px;
+  background-color: inherit;
+  border: 1px solid #32cd32;
+  color: #32cd32;
+  cursor: pointer;
+}
+
+.project-img {
+  width: 100%;
+  height: 300px;
+  background-color: #444;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  background: url(https://placehold.co/600x300/png) center/cover no-repeat;
+  
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+}
+
+.project-content {
+  background-color: black;
+  width: 100%;
+  opacity: 0.5;
+  display: flex;
+  justify-content: space-between;
+}
+
+.project-content h3 {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.project-content p {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.project-content .project-detail {
+  text-align: left;
+  padding: 5px 20px;
+}
+
+.project-content .project-action {
+  padding: 5px 20px;
+  display: flex;
+  align-items: center;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  z-index: 10;
+  font-size: 24px;
+}
+
+.prev-btn { left: 10px; }
+.next-btn { right: 10px; }
+
+.carousel-nav-dots {
+  text-align: center;
+  padding: 10px 0;
+}
+
+.dot {
+  border: none;
+  background-color: #555;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid #00ff88;
-  box-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
+  margin: 0 5px;
+  cursor: pointer;
+  padding: 0;
+  transition: background-color 0.3s ease;
 }
 
-.profile-section .profile-text {
+.dot.active {
+  background-color: #32cd32;
+}
+
+/* === ELEMEN LATAR BELAKANG MELAYANG === */
+.background-shapes {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.shape {
+  position: absolute;
+  display: block;
+  list-style: none;
+  background: linear-gradient(45deg, rgba(50, 205, 50, 0.2), rgba(0, 255, 255, 0.2));
+  border-radius: 50%;
+  animation: float 25s linear infinite;
+}
+
+/* === BAGIAN KONTAK (#contact) === */
+#contact #form-contact {
+  border: 1px solid #444;
+  background-color: #1e1e1e;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 15px;
+}
+#contact label {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+#contact input,
+#contact textarea {
+  background-color: #2a2a2a;
+  color: #e0e0e0;
+  border: 1px solid #444;
+  border-radius: 10px;
+  padding: 10px;
+}
+#contact input:focus,
+#contact textarea:focus {
+  outline: 1px solid #32cd32;
+  border-color: #32cd32;
+}
+#contact textarea {
+  margin-bottom: 10px;
+}
+
+/* === FOOTER === */
+footer {
   text-align: center;
-  order: 2;
+  padding: 20px;
+  margin-top: 20px;
+  background-color: #1e1e1e;
+}
+footer .social-links {
+  margin-bottom: 10px;
+}
+footer .social-links a {
+  margin: 0 15px;
+}
+footer p {
+  margin: 0;
+  color: #aaa;
 }
 
-.profile-section .profile-text h1 {
-  font-size: 2.5rem;
-  color: #00ff88;
-  margin-bottom: 0.5rem;
-  text-align: center;
+/* animasi latar belakang */
+@keyframes float {
+  0% {
+    transform: translateY(100vh) scale(0) rotate(0deg);
+    border-radius: 50%; /* Mulai lingkaran */
+  }
+  50% {
+    border-radius: 5%; /* Berubah jadi persegi */
+  }
+  100% {
+    transform: translateY(-10vh) scale(1) rotate(360deg);
+    border-radius: 50%; /* Kembali jadi lingkaran */
+  }
 }
 
-.profile-section .profile-text p {
-  font-size: 1.2rem;
-  color: #cccccc;
-  text-align: center;
+/* --- MENU RESPONSIVE (HAMBURGER) --- */
+.menu-toggle {
+  display: none;
 }
 
-.profile-section .social-links-list {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    gap: 2rem; /* Adjust gap between icons if needed */
-    flex-wrap: wrap;
+.menu-icon {
+  display: none;
+  cursor: pointer;
+  font-size: 28px;
+  color: #fff;
 }
 
-.profile-section .social-links-list li a {
-    text-decoration: none;
-    color: #ffffff;
-    font-weight: 500;
-    font-size: 1.3rem; /* Increase icon size slightly */
-    transition: color 0.3s ease;
-    display: inline-flex; /* Helps center icon vertically if needed */
-    align-items: center; /* Helps center icon vertically if needed */
-}
-
-.profile-section .social-links-list li a:hover {
-    color: #00ff88;
-}
-
-.profile-section .social-links-list li a i {
-    color: inherit; /* Icon color inherits from link */
-    transition: color 0.3s ease;
-    vertical-align: middle; /* Better alignment */
-}
-
-
-.about-skills-container {
-    /* Styles applied within media query for larger screens */
-    margin-bottom: 3rem; /* Default bottom margin */
-}
-
-.skills-section {
+/* --- ATURAN RESPONSIVE (TAMPILAN MOBILE) --- */
+@media (max-width: 600px) {
+  /* -- Pengaturan Header & Navigasi Mobile -- */
+  .menu-icon {
+    display: block;
+  }
+  .normal-section {
+    padding: 10px 0;
+  }
+  #welcome-msg {
+    padding-left: 0;
     text-align: center;
-}
-
-/* Skills Section Title uses generic section h2 */
-
-.skill-carousel {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scroll-behavior: smooth;
-    padding-bottom: 1rem;
-    scrollbar-width: thin;
-    scrollbar-color: #00ff88 #1a1a1a;
-}
-
-.skill-carousel::-webkit-scrollbar {
-    height: 8px;
-}
-
-.skill-carousel::-webkit-scrollbar-track {
-    background: #1a1a1a;
-    border-radius: 10px;
-}
-
-.skill-carousel::-webkit-scrollbar-thumb {
-    background: #00ff88;
-    border-radius: 10px;
-}
-
-.skill-carousel::-webkit-scrollbar-thumb:hover {
-    background: #00cc66;
-}
-
-.skills-section .skill-list {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    justify-content: flex-start; /* Keep left align for scrolling */
-    flex-wrap: nowrap; /* Ensure items stay in one line for scroll */
-    gap: 0.8rem;
-    padding: 0 1rem; /* Padding for visual spacing at ends */
-}
-
-.skills-section .skill-list li {
-    flex-shrink: 0; /* Prevent shrinking */
-    background-color: #1a1a1a;
-    color: #00ff88;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    border: 1px solid #00ff88;
-    white-space: nowrap; /* Keep text on one line */
-}
-
-.about-section {
-    /* No specific styles needed, uses defaults */
-}
-
-/* About Section Title uses generic section h2 */
-
-.about-section p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: #cccccc;
-    text-align: center; /* Default alignment */
-}
-
-.project-section {
-    /* No specific styles needed, uses defaults */
-}
-
-/* Project Section Title uses generic section h2 */
-
-.project-section p {
-    /* Currently just placeholder text styling */
-     text-align: center;
-     color: #cccccc;
-}
-
-/* --- Statistics Section Styles --- */
-.statistics-section {
-    text-align: center;
-}
-
-/* Statistics Title uses generic section h2 */
-
-.stats-container {
-    display: flex;
-    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
-    justify-content: center; /* Center items horizontally */
-    gap: 2rem 3rem; /* Row gap and Column gap */
-    margin-top: 2.5rem; /* Space below the title */
-}
-
-.stat-item {
-    text-align: center;
-    min-width: 150px; /* Minimum width for each stat block */
-    flex-basis: 150px; /* Suggested starting width */
-    flex-grow: 1; /* Allow items to grow if space allows */
-    padding: 0.5rem; /* Some internal spacing */
-}
-
-.stat-number {
-    display: block; /* Make it a block to take full width */
-    font-size: 2.8rem; /* Large font size for the number */
-    font-weight: bold;
-    color: #00ff88; /* Use accent color */
-    margin-bottom: 0.5rem; /* Space between number and label */
-    line-height: 1.1;
-}
-
-.stat-label {
-    font-size: 1rem;
-    color: #cccccc;
-    line-height: 1.4;
-}
-/* --- End Statistics Section Styles --- */
-
-.contact-section {
-    text-align: center;
-}
-
-/* Contact Title uses generic section h2 */
-
-.email-display-box {
-    background-color: #1a1a1a;
-    border: 1px solid #333;
-    border-radius: 8px;
-    padding: 1.5rem 2rem;
-    max-width: 500px;
-    margin: 0 auto;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.email-display-box p {
-    font-size: 1.1rem;
-    color: #cccccc;
-    line-height: 1.6;
-    margin-bottom: 0.5rem;
-}
-
-.email-display-box p:last-child {
-    margin-bottom: 0;
-}
-
-.email-display-box .email-address {
-    font-size: 1.2rem;
-    font-weight: 500;
-}
-
-.email-display-box .email-address a {
-    color: #00ff88;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.email-display-box .email-address a:hover {
-    color: #00cc66;
-    text-decoration: underline;
-}
-
-.section-separator {
-    border: none;
-    height: 1px;
-    background-color: #333;
-    margin: 3rem auto;
+    padding-top: 100px;
+    font-size: 30px;
+  }
+  header {
+    padding: 5px 20px;
+  }
+  header nav {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
     width: 100%;
-    max-width: 1000px;
-    opacity: 0.5;
-}
-
-/* --- Responsive Design --- */
-@media (max-width: 768px) {
-   /* --- Existing Responsive Nav Styles --- */
-   .nav-links {
-     display: none;
-   }
-   .menu-toggle {
-     display: flex;
-   }
-   .nav-mobile.show {
-     display: flex;
-   }
-   /* --- End Existing Responsive Nav --- */
-
-   /* Adjust section padding and max-width for mobile */
-   main section {
-       padding-top: 1.5rem;
-       padding-bottom: 1.5rem;
-       padding-left: 0.8rem;
-       padding-right: 0.8rem;
-       max-width: 100%;
-   }
-
-   /* Ensure these sections don't exceed viewport width */
-   .about-section,
-   .skills-section,
-   .project-section,
-   .statistics-section, /* Include new section */
-   .contact-section {
-        max-width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-   }
-
-   /* Adjust section title size for mobile */
-    main section h2 {
-        font-size: 1.7rem;
-        margin-bottom: 1.5rem;
-    }
-
-  /* Profile section adjustments */
-  .profile-section img {
-    width: 140px;
-    height: 140px;
+    background-color: #006400; /* Darker Green */
+    z-index: 100;
+  }
+  header nav ul {
+    flex-direction: column;
+    width: 100%;
+  }
+  header nav li {
+    display: block;
+    text-align: center;
+    margin: 0;
+    padding: 15px 0;
+    border-bottom: 1px solid #005000;
+  }
+  header nav li:last-child {
+    border-bottom: none;
+  }
+  .section-title {
+    font-size: 25px;
   }
 
-  .profile-section .profile-text h1 {
-    font-size: 2rem;
+  .menu-toggle:checked + .menu-icon + nav {
+    display: block;
+  }
+  /* -- Penyesuaian Layout Utama -- */
+  main {
+    padding: 0 15px;
+  }
+  /* -- Bagian Bio -- */
+  #bio {
+    flex-direction: column;
+    height: auto;
+    text-align: center;
+    padding: 20px 0;
+  }
+  #bio .left-column,
+  #bio .right-column {
+    width: 100%;
+    height: auto;
+    padding: 10px;
+  }
+  #about-me {
+    flex-direction: column;
+    height: auto;
+    padding: 20px 0;
+  }
+  #about-me .left-column,
+  #about-me .right-column {
+    width: 100%;
+    height: auto;
+    padding: 10px;
+  }
+  #hello-msg {
+    font-size: 1.6em;
+    line-height: 1.4;
   }
 
-  .profile-section .profile-text p {
-    font-size: 1rem;
+  #profile-photo {
+    width: 200px;
+    height: 200px;
+    margin-top: 20px;
   }
-
-  .profile-section .social-links-list {
-    gap: 1.5rem;
-    margin-top: 0;
+  /* -- Bagian Tombol Know More -- */
+  #know-more {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* Memberi jarak antar tombol */
+    transform: translateY(-20px); /* Mengurangi efek geser ke atas untuk mobile */
+    padding-top: 20px;
   }
-
-   .profile-section .social-links-list li a {
-    font-size: 1.2rem; /* Adjust icon size for mobile if needed */
-   }
-
-   /* About/Skills Container */
-   .about-skills-container {
-       margin-bottom: 2rem;
-   }
-
-   /* Skills section adjustments */
-   .skills-section .skill-list {
-        padding: 0 0.8rem; /* Consistent padding */
-   }
-
-    .skills-section .skill-list li {
-        font-size: 0.8rem;
-        padding: 0.4rem 0.8rem;
-    }
-
-   /* About section adjustments */
-   .about-section p {
-        font-size: 1rem;
-   }
-
-   /* Statistics section adjustments for mobile */
-    .stats-container {
-        gap: 1.5rem; /* Slightly smaller gap on mobile */
-        margin-top: 2rem;
-    }
-
-    .stat-number {
-        font-size: 2.2rem; /* Slightly smaller number on mobile */
-    }
-
-    .stat-label {
-        font-size: 0.9rem; /* Slightly smaller label on mobile */
-    }
-
-   /* Separator adjustments */
-   .section-separator {
-        margin: 2rem auto;
-        max-width: calc(100% - 1.6rem); /* Match section padding */
-        padding-left: 0;
-        padding-right: 0;
-   }
-
-   /* Contact section adjustments */
-   .email-display-box {
-        max-width: 90%;
-        padding: 1rem 1.5rem;
-   }
-    .email-display-box p {
-        font-size: 1rem;
-    }
-    .email-display-box .email-address {
-        font-size: 1.1rem;
-        word-break: break-all;
-    }
-}
-
-/* --- Desktop Specific Styles --- */
-@media (min-width: 769px) {
-
-    /* Add horizontal padding to the main container on larger screens */
-    main {
-        padding-left: 3rem; /* Adjust this value as needed */
-        padding-right: 3rem; /* Adjust this value as needed */
-    }
-
-    /* Profile section layout adjustments */
-    .profile-section .profile-content-container {
-      flex-direction: row;
-      justify-content: center;
-      gap: 3rem;
-      align-items: center; /* Vertically align image and text */
-    }
-
-    .profile-section .profile-text {
-      order: 1;
-      text-align: left;
-      flex-shrink: 0;
-      max-width: 600px;
-    }
-
-    .profile-section img {
-      order: 2;
-      flex-shrink: 0;
-    }
-
-    .profile-section .profile-text h1,
-    .profile-section .profile-text p {
-       text-align: left; /* Align text left on larger screens */
-    }
-
-    /* About & Skills side-by-side layout */
-    .about-skills-container {
-        display: flex;
-        flex-direction: row;
-        gap: 3rem;
-        align-items: flex-start; /* Align tops */
-        max-width: 1000px; /* Max width of the combined container */
-        margin: 0 auto; /* Center container */
-        padding: 0; /* Remove padding from container, sections handle internal */
-        margin-bottom: 0; /* Reset bottom margin */
-    }
-
-    .about-skills-container > section {
-        flex: 1; /* Allow sections to share space */
-        margin: 0; /* Reset margins */
-        /* Use the base section padding */
-        padding-left: 1rem;
-        padding-right: 1rem;
-        max-width: none; /* Remove max-width constraint within flex container */
-    }
-
-    .about-skills-container .about-section h2,
-    .about-skills-container .about-section p {
-         text-align: left; /* Align About text left */
-    }
-
-    .about-skills-container .skills-section h2 {
-         text-align: left; /* Align Skills title left */
-    }
-
-    /* Skill list wrapping on desktop */
-    .about-skills-container .skills-section .skill-carousel {
-        overflow-x: visible; /* No scroll needed */
-        padding-bottom: 0;
-    }
-
-    .about-skills-container .skills-section .skill-list {
-        flex-wrap: wrap; /* Allow skills to wrap */
-        justify-content: flex-start; /* Align wrapped items to start */
-        padding: 0; /* Reset padding */
-    }
-
-    .about-skills-container .skills-section .skill-list li {
-        white-space: normal; /* Allow text wrapping inside skill items */
-        flex-shrink: 1; /* Allow shrinking if needed */
-        min-width: 0; /* Allow shrinking below content size */
-    }
-
-     /* Hide horizontal scroll hint on desktop */
-     .skills-section p[style*="Scroll horizontally"],
-     .about-skills-container .skills-section .skill-carousel + p {
-          display: none;
-     }
+  .btn-know-more {
+    padding: 10px 20px;
+    border-radius: 15px;
+  }
+  /* -- Bagian Proyek -- */
+  #project .project-container {
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    gap: 20px;
+    width: 100%;
+  }
+  #project .project-box {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 10px;
+  }
+  .education-box {
+    width: 100%;
+  }
+  .bordered {
+    margin: 0 0 10px;
+  }
+  /* Sembunyikan animasi di mobile untuk performa lebih baik */
+  .background-shapes {
+    display: none;
+  }
 }

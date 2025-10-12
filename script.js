@@ -1,65 +1,105 @@
-function toggleMenu() {
-  const menu = document.getElementById('mobileMenu');
-  menu.classList.toggle('show');
-}
-
-const mobileLinks = document.querySelectorAll('#mobileMenu a');
-mobileLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        const menu = document.getElementById('mobileMenu');
-        if (menu.classList.contains('show')) {
-           menu.classList.remove('show');
-        }
-    });
-});
-
 document.addEventListener('DOMContentLoaded', () => {
-    const statsSection = document.querySelector('#statistics');
-    const statNumbers = document.querySelectorAll('.stat-number');
-    let animationStarted = false;
+  // --- Intersection Observer untuk animasi fade-in section ---
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    },
+    { threshold: 0.5 } // Trigger saat 50% elemen terlihat
+  );
 
-    const animateCountUp = (element) => {
-        const target = parseInt(element.dataset.target, 10);
-        const finalDisplayText = element.dataset.text || target;
-        const duration = 1500;
-        const intervalTime = 10;
-        const steps = duration / intervalTime;
-        const increment = target / steps;
-        let currentCount = 0;
+  document.querySelectorAll('section').forEach((section) => {
+    observer.observe(section);
+  });
 
-        const counterInterval = setInterval(() => {
-            currentCount += increment;
+  // --- Mengatur posisi, ukuran, dan durasi acak untuk bentuk latar belakang ---
+  const shapes = document.querySelectorAll('.background-shapes .shape');
+  shapes.forEach(shape => {
+    // Ukuran acak antara 20px dan 120px
+    const size = Math.random() * 100 + 20;
+    // Posisi horizontal acak antara 0% dan 90% dari lebar layar
+    const leftPosition = Math.random() * 90; 
+    // Durasi animasi acak antara 20 dan 40 detik
+    const animationDuration = Math.random() * 20 + 20; 
 
-            if (currentCount >= target) {
-                clearInterval(counterInterval);
-                element.textContent = finalDisplayText;
-            } else {
-                element.textContent = Math.ceil(currentCount);
-            }
-        }, intervalTime);
+    shape.style.width = `${size}px`;
+    shape.style.height = `${size}px`;
+    shape.style.left = `${leftPosition}vw`;
+    shape.style.animationDuration = `${animationDuration}s`;
+  });
+
+  // --- Logika Carousel Proyek ---
+  const track = document.querySelector('.project-track'); // Ambil semua data proyek
+  if (track) { // Cek apakah elemen track ada
+    const slides = Array.from(track.children); // Buat array dari semua slide proyek.
+    const nextButton = document.querySelector('.next-btn');
+    const prevButton = document.querySelector('.prev-btn');
+    const dotsNav = document.querySelector('.carousel-nav-dots');
+    const slideWidth = slides[0].getBoundingClientRect().width; // Dapatkan lebar satu slide.
+
+    let currentIndex = 0; // index slide yang aktif
+
+    // Buat dots navigasi berdasarkan jumlah slide
+    slides.forEach((slide, index) => {
+      const dot = document.createElement('button'); // Buat elemen dot
+      dot.classList.add('dot'); // Tambahkan class dot
+      if (index === 0) dot.classList.add('active'); // Jadikan dot pertama aktif
+      dotsNav.appendChild(dot); // Tambahkan dot ke dalam navigasi
+    });
+
+    const dots = Array.from(dotsNav.children); // Buat array dari semua elemen dot. Sama kayak slides
+
+    // Fungsi untuk memperbarui dot yang aktif
+    const updateDots = (currentDot, targetDot) => {
+      currentDot.classList.remove('active'); // Hapus class active dari dot lama.
+      targetDot.classList.add('active'); // Tambahkan class active ke dot baru.
     };
 
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.3
+    // Fungsi untuk memindahkan slide
+    const moveToSlide = (targetIndex) => {
+      track.style.transform = 'translateX(-' + slideWidth * targetIndex + 'px)'; // Geser track ke posisi slide tujuan.
+      // Rumus untuk geser slide
+      // translateX(- lebarSlide * indexTujuan)
+
+      const currentDot = dots[currentIndex]; // Dot yang aktif
+      const targetDot = dots[targetIndex]; // Dot tujuan
+      updateDots(currentDot, targetDot); // Update status aktif pada dot.
+      currentIndex = targetIndex; // Update indeks slide yang aktif.
     };
 
-    const observerCallback = (entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting && !animationStarted) {
-                animationStarted = true;
-                statNumbers.forEach(num => animateCountUp(num));
-                observer.unobserve(entry.target);
-            }
-        });
-    };
+    // Tombol next
+    nextButton.addEventListener('click', () => {
+      const nextIndex = (currentIndex + 1) % slides.length; // Hitung indeks slide berikutnya (looping).
+      // rumus (indeks sekarang + 1) mod jumlah slide
+      moveToSlide(nextIndex); // Pindahkan ke slide berikutnya.
+    });
 
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
+    // Tombol prev
+    prevButton.addEventListener('click', () => {
+      const prevIndex = (currentIndex - 1 + slides.length) % slides.length; // Hitung indeks slide sebelumnya (looping).
+      // rumus (indeks sekarang - 1 + jumlah slide) mod jumlah slide
+      moveToSlide(prevIndex); // Pindahkan ke slide sebelumnya.
+    });
 
-    if (statsSection) {
-        observer.observe(statsSection);
-    } else {
-        console.warn('Statistics section (#statistics) not found.');
-    }
+    // Tombol navigasi lewat dot
+    dotsNav.addEventListener('click', e => {
+      const targetDot = e.target.closest('button.dot'); // Cari elemen dot yang diklik.
+      if (!targetDot) return; // Jika bukan dot yang diklik, abaikan.
+      const targetIndex = dots.findIndex(dot => dot === targetDot); // Cari indeks dari dot yang diklik
+      moveToSlide(targetIndex);
+    });
+  }
 });
+
+const terhubung = () => {
+  window.open('https://www.linkedin.com/in/faris-ay', '_blank');
+};
+
+const demo = () => {
+  const demo_list = ["ciluk baa", "hahaha", "wkwkwk", "aduh", "astaga", "yah", "yey", "sip", "mantap", "oke"];
+  const randomIndex = Math.floor(Math.random() * demo_list.length);
+  alert(demo_list[randomIndex]);
+}
