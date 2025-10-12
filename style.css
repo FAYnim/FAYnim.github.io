@@ -514,15 +514,13 @@ footer p {
 }
 
 /* --- MENU RESPONSIVE (HAMBURGER) --- */
-.menu-toggle {
-  display: none;
-}
-
 .menu-icon {
   display: none;
   cursor: pointer;
   font-size: 28px;
   color: #fff;
+  background: none;
+  border: none;
 }
 
 /* --- ATURAN RESPONSIVE (TAMPILAN MOBILE) --- */
@@ -543,19 +541,27 @@ footer p {
   header {
     padding: 5px 20px;
   }
-  header nav {
-    display: none;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    width: 100%;
-    background-color: #006400; /* Darker Green */
-    z-index: 100;
+	header nav {
+	    display: block;
+	    position: absolute;
+	    top: 100%;
+	    left: 0;
+	    width: 100%;
+	    background-color: #006400; /* Darker Green */
+	    z-index: 100;
+	    transform: translateX(-100%);
+	    transition: transform 0.3s ease-in-out;
+	  }
+
+header nav.active {
+    transform: translateX(0);
   }
+  
   header nav ul {
     flex-direction: column;
     width: 100%;
   }
+  
   header nav li {
     display: block;
     text-align: center;
@@ -563,6 +569,7 @@ footer p {
     padding: 15px 0;
     border-bottom: 1px solid #005000;
   }
+  
   header nav li:last-child {
     border-bottom: none;
   }
@@ -570,9 +577,6 @@ footer p {
     font-size: 25px;
   }
 
-  .menu-toggle:checked + .menu-icon + nav {
-    display: block;
-  }
   /* -- Penyesuaian Layout Utama -- */
   main {
     padding: 0 15px;

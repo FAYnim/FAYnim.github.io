@@ -92,6 +92,40 @@ document.addEventListener('DOMContentLoaded', () => {
       moveToSlide(targetIndex);
     });
   }
+
+	// --- TOGGLE SIDEBAR MOBILE ---
+	const menuToggle = document.getElementById('menu-toggle');
+	const nav = document.querySelector('header nav');
+
+	if (menuToggle && nav) {
+	  menuToggle.addEventListener('click', () => {
+	    nav.classList.toggle('active');
+	    
+	    // Optional: Ubah ikon menu menjadi X ketika aktif
+	    if (nav.classList.contains('active')) {
+	      menuToggle.innerHTML = '✕';
+	    } else {
+	      menuToggle.innerHTML = '&#9776;';
+	    }
+	  });
+	  
+	  // Tutup menu ketika link di klik (opsional, untuk UX yang lebih baik)
+	  const navLinks = document.querySelectorAll('header nav a');
+	  navLinks.forEach(link => {
+	    link.addEventListener('click', () => {
+	      nav.classList.remove('active');
+	      menuToggle.innerHTML = '&#9776;';
+	    });
+	  });
+	  
+	  // Tutup menu ketika mengklik di luar area navigasi (opsional)
+	  document.addEventListener('click', (e) => {
+	    if (!nav.contains(e.target) && !menuToggle.contains(e.target)) {
+	      nav.classList.remove('active');
+	      menuToggle.innerHTML = '&#9776;';
+	    }
+	  });
+	}
 });
 
 const terhubung = () => {
