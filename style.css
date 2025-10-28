@@ -273,7 +273,7 @@ section {
 }
 .skill-track {
   display: inline-block; /* Membuat track menjadi elemen inline yang bisa dianimasikan */
-  animation: scroll 15s linear infinite; /* Terapkan animasi scroll */
+  animation: scroll 25s linear infinite; /* Terapkan animasi scroll */
 }
 .skill-box {
   display: inline-flex; /* Atur item skill agar berjajar ke samping */
