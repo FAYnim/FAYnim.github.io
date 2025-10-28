@@ -63,7 +63,48 @@ document.addEventListener('DOMContentLoaded', () => {
 	      menuToggle.innerHTML = '&#9776;';
 	    }
 	  });
-	}
+  }
+  
+  // --- EFEK MENGETIK UNTUK PROFESI ---
+  const professionEl = document.getElementById('profession');
+  const professions = ["Fullstack Developer", "IoT Engineer", "Pentester", "Tech Enthusiast"];
+  let professionIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+
+  function typeWriter() {
+    const currentProfession = professions[professionIndex];
+    let displayText = '';
+
+    if (isDeleting) {
+      // Hapus karakter
+      displayText = currentProfession.substring(0, charIndex - 1);
+      charIndex--;
+    } else {
+      // Tambah karakter
+      displayText = currentProfession.substring(0, charIndex + 1);
+      charIndex++;
+    }
+
+    professionEl.textContent = displayText;
+
+    if (!isDeleting && charIndex === currentProfession.length) {
+      // Selesai mengetik, tunggu, lalu mulai hapus
+      setTimeout(() => isDeleting = true, 2000);
+    } else if (isDeleting && charIndex === 0) {
+      // Selesai menghapus, pindah ke profesi berikutnya
+      isDeleting = false;
+      professionIndex = (professionIndex + 1) % professions.length;
+    }
+
+    const typingSpeed = isDeleting ? 50 : 100;
+    setTimeout(typeWriter, typingSpeed);
+  }
+
+  // Mulai efek mengetik setelah halaman dimuat
+  if(professionEl) {
+    typeWriter();
+  }
 });
 
 const terhubung = () => {

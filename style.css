@@ -166,18 +166,13 @@ section {
   /* box-shadow: -2px -2px 15px 2px #32cd32, 2px 2px 15px 4px #00ffff; */
   animation: logo-spin 5s linear infinite;
 }
-#hello-msg #profession::before {
-  content: "Fullstack Developer";
-  animation: switch-profession 8s infinite;
+#hello-msg #profession::after {
+  content: '|';
+  animation: blink 1s infinite;
 }
-#hello-msg #profession:after {
-  content: "";
-}
-@keyframes switch-profession {
-  0% { content: "Fullstack Developer"; }
-  25% { content: "IoT Engineer"; }
-  50% { content: "Pentester"; }
-  75% { content: "Tech Enthusiast"; }
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
 /* --- BAGIAN TOMBOL "KNOW MORE" --- */
