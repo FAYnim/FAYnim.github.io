@@ -315,6 +315,72 @@ section {
   align-items: center;
 }
 
+/* --- BAGIAN SERTIFIKAT (#certificates) --- */
+.certificate-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.certificate-box {
+  background: #1e1e1e;
+  border: 1px solid #444;
+  border-radius: 10px;
+  overflow: hidden;
+  width: calc(33.333% - 20px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.certificate-box:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(50, 205, 50, 0.2);
+}
+
+.certificate-box img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.certificate-info {
+  padding: 15px;
+}
+
+.certificate-info h3, .certificate-info p {
+  margin: 0;
+}
+
+.certificate-box.coming-soon {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  min-height: 250px;
+}
+
+.certificate-box.coming-soon .coming-soon-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+  color: #555;
+  transition: color 0.3s ease;
+}
+
+.certificate-box.coming-soon:hover .coming-soon-overlay {
+  color: #32cd32;
+}
+.certificate-box.coming-soon .certificate-info {
+  text-align: center;
+}
 /* === BAGIAN PROYEK (#project) === */
 
 .project-carousel-container {
@@ -644,6 +710,12 @@ header nav.active {
     padding: 10px;
   }
   .education-box {
+    width: 100%;
+  }
+  .certificate-container {
+    flex-direction: column;
+  }
+  .certificate-box {
     width: 100%;
   }
   .bordered {
