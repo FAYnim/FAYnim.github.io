@@ -237,8 +237,11 @@
       <section class="normal-section" id="certificates">
         <h2 class="section-title">Sertifikat</h2>
         <div class="certificate-container">
-          <div class="certificate-box">
-            <img src="asset/certificate-responsive-web-design-faris-adilllah-yufiansyah.png" alt="Sertifikat Responsive Web Design" height="100">
+          <div class="certificate-box" 
+               onclick="showPopup(
+                 '<h2>Responsive Web Design</h2><p>Diberikan oleh FreeCodeCamp pada tahun 2025.</p><img src=\'asset/certificate-responsive-web-design-faris-adilllah-yufiansyah.png\' alt=\'Sertifikat Responsive Web Design\' style=\'width:100%; max-width:600px; margin-top:15px;\'>'
+               )">
+            <img src="asset/certificate-responsive-web-design-faris-adilllah-yufiansyah.png" alt="Sertifikat Responsive Web Design" class="cert-thumbnail">
             <div class="certificate-info">
               <h3>Responsive Web Design</h3>
               <p>FreeCodeCamp - 2025</p>
@@ -325,6 +328,15 @@
         </form>
       </section>
     </main>
+
+    <div id="popup-overlay" class="popup-overlay hidden">
+      <div class="popup-content">
+        <span class="popup-close" id="popup-close">&times;</span>
+        <div id="popup-body">
+          <!-- Konten pop-up akan dimasukkan di sini oleh JavaScript -->
+        </div>
+      </div>
+    </div>
 
     <footer>
       <div class="social-links">

@@ -105,6 +105,33 @@ document.addEventListener('DOMContentLoaded', () => {
   if(professionEl) {
     typeWriter();
   }
+
+  // --- POP-UP LOGIC ---
+  const popupOverlay = document.getElementById('popup-overlay');
+  const popupClose = document.getElementById('popup-close');
+  const popupBody = document.getElementById('popup-body');
+
+  // Fungsi untuk menampilkan pop-up
+  window.showPopup = (content) => {
+    popupBody.innerHTML = content;
+    popupOverlay.classList.remove('hidden');
+  }
+
+  // Fungsi untuk menyembunyikan pop-up
+  const hidePopup = () => {
+    popupOverlay.classList.add('hidden');
+    popupBody.innerHTML = ''; // Kosongkan konten saat ditutup
+  }
+
+  // Event listener untuk tombol close
+  popupClose.addEventListener('click', hidePopup);
+
+  // Event listener untuk menutup saat klik di luar area konten
+  popupOverlay.addEventListener('click', (e) => {
+    if (e.target === popupOverlay) {
+      hidePopup();
+    }
+  });
 });
 
 const terhubung = () => {
