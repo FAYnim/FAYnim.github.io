@@ -653,6 +653,10 @@ header nav.active {
     width: 100%;
     margin-bottom: 10px;
   }
+
+  .about-me-box div {
+    padding: 10px 0;
+  }
   
   /* Responsive adjustments for about-me text elements */
   .about-me-title {
