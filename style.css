@@ -254,6 +254,7 @@ section {
   font-size: 30px;
 }
 
+
 .skill-container {
   width: 100%;
   background-color: #121212;
@@ -570,7 +571,7 @@ footer p {
     display: block;
   }
   .normal-section {
-    padding: 10px 0;
+    padding: 10px 15px;
   }
   #welcome-msg {
     padding-left: 0;
@@ -634,16 +635,34 @@ header nav.active {
     height: auto;
     padding: 10px;
   }
-  #about-me {
-    flex-direction: column;
-    height: auto;
-    padding: 20px 0;
+  /* -- Bagian About Me -- */
+  .normal-section#about-me {
+    padding: 20px 15px;
   }
-  #about-me .left-column,
-  #about-me .right-column {
+  .about-me-container {
+    flex-direction: column;
+  }
+  .about-me-box {
     width: 100%;
-    height: auto;
-    padding: 10px;
+  }
+  .about-me-box:nth-child(1) {
+    padding-right: 0;
+    margin-bottom: 20px;
+  }
+  .about-me-box:nth-child(2) div {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  /* Responsive adjustments for about-me text elements */
+  .about-me-title {
+    font-size: 16px;
+  }
+  .about-me-text {
+    font-size: 18px;
+  }
+  .about-me-number {
+    font-size: 22px;
   }
   #hello-msg {
     font-size: 1.6em;
