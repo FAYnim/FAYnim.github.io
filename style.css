@@ -404,6 +404,7 @@ section {
 .project-box img {
   width: 100%;
   height: auto;
+  /* min-height: 250px; */
   display: block;
 }
 
@@ -421,6 +422,32 @@ section {
   color: white;
   padding: 8px 15px;
   border-radius: 5px;
+}
+
+/* Tech Stack Chips Styling */
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 20px 0;
+}
+
+.tech-chip {
+  background-color: #2a2a2a;
+  border: 1px solid #444;
+  color: #32cd32;
+  padding: 4px 10px;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.tech-chip:hover {
+  background-color: #32cd32;
+  color: #121212;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 4px rgba(50, 205, 50, 0.3);
 }
 
 /* === ELEMEN LATAR BELAKANG MELAYANG === */
@@ -716,5 +743,11 @@ header nav.active {
   /* Sembunyikan animasi di mobile untuk performa lebih baik */
   .background-shapes {
     display: none;
+  }
+  
+  /* Responsive Tech Stack Chips */
+  .tech-chip {
+    font-size: 11px;
+    padding: 3px 8px;
   }
 }
