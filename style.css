@@ -560,6 +560,12 @@ footer .social-links {
 }
 footer .social-links a {
   margin: 0 15px;
+  color: #e0e0e0; /* Warna ikon default diubah menjadi putih */
+  font-size: 20px; /* Ukuran ikon diperbesar */
+  transition: color 0.3s ease-in-out;
+}
+footer .social-links a:hover {
+  color: #32cd32; /* Warna ikon saat di-hover menjadi hijau */
 }
 footer p {
   margin: 0;
