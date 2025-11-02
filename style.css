@@ -747,6 +747,9 @@ footer p {
   .education-box {
     width: 100%;
   }
+  .education-box .education-year {
+    display: none;
+  }
   .certificate-container {
     flex-direction: column;
   }
