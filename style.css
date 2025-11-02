@@ -28,9 +28,8 @@ section {
   min-height: 400px;
   padding-top: 50px;
   opacity: 0;
+  transition: opacity 0.7s ease-out;
   /* transform: translateY(50px); */
-  /* transition: opacity 0.5s ease-out, transform 0.5s ease-out; */
-  transition: opacity 0.5s ease-out;
 }
 section.visible {
   opacity: 1;
@@ -85,10 +84,11 @@ header nav li {
 header nav a {
   color: #fff;
   font-weight: bold;
-  transition: color 0.3s ease-in-out, border-bottom 0.1s ease-in-out;
+  transition: color 0.3s ease-in-out, border-bottom 0.1s ease, padding-bottom 0.1s ease;
 }
 header nav a:hover {
   color: #32cd32;
+  padding-bottom: 5px;
   border-bottom: 2px solid #32cd32;
 }
 
@@ -210,9 +210,11 @@ section {
   padding: 10px 15px;
   border-radius: 5px;
   background: #222;
+  z-index: 10;
 }
 .about-me-box {
   width: 50%;
+  z-index: 10;
 }
 .about-me-box:nth-child(1) {
   padding-right: 25px;
@@ -746,14 +748,66 @@ header nav.active {
   .bordered {
     margin: 0 0 10px;
   }
-  /* Sembunyikan animasi di mobile untuk performa lebih baik */
   .background-shapes {
     display: none;
   }
   
-  /* Responsive Tech Stack Chips */
   .tech-chip {
     font-size: 11px;
     padding: 3px 8px;
   }
+}
+
+/* From Uiverse.io by bhaveshxrawat */ 
+.card {
+  position: relative;
+  display: flex;
+  place-content: center;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background: linear-gradient(180deg, #00ffff, #32cd32);
+  animation: neon-bg-anim 5s linear infinite;
+  transition: all 1s linear;
+  border-radius: 100%;
+  z-index: 1;
+}
+
+@keyframes neon-bg-anim {
+  0% {
+    left: calc(100% - 75px);
+    top: calc(0% - 75px);
+  }
+  15% {
+    left: calc(100% - 75px);
+    top: calc(100% - 75px);
+  }
+  50% {
+    left: calc(0% - 75px);
+    top: calc(100% - 75px);
+  }
+  65% {
+    left: calc(0% - 75px);
+    top: calc(0% - 75px);
+  }
+  100% {
+    left: calc(100% - 75px);
+    top: calc(0% - 75px);
+  }
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  background: #222;
+  inset: 3px;
+  border-radius: 17px;
+  z-index: 1;
 }
