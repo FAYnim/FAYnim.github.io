@@ -210,10 +210,10 @@ section {
 /* --- BAGIAN ABOUT ME & SKILLS (#about-me) --- */
 .about-me-container {
   display: flex;
-  border: 1px solid #444;
+  border: 1px solid #2a2a2a;
   padding: 10px 15px;
   border-radius: 5px;
-  background: #222;
+  background: #161515;
   z-index: 10;
 }
 .about-me-box {
@@ -236,14 +236,14 @@ section {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 1px solid #444;
-  background: #1e1e1e;
+  border: 1px solid #2a2a2a;
+  background: #161515;
   border-radius: 5px;
-  box-shadow: 2px 2px 0 #444;
+  box-shadow: 2px 2px 0 #2a2a2a;
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 .about-me-box:nth-child(2) div:hover {
-  box-shadow: 0 0 0 #444;
+  box-shadow: 0 0 0 #2a2a2a;
   transform: translate(2px, 2px);
 }
 .about-me-title {
@@ -264,8 +264,8 @@ section {
 .skill-container {
   width: 100%;
   background-color: #121212;
-  border-right: 2px solid #444;
-  border-left: 2px solid #444;
+  border-right: 2px solid #2a2a2a;
+  border-left: 2px solid #2a2a2a;
   overflow: hidden; /* Sembunyikan item yang keluar dari kontainer */
   white-space: nowrap; /* Pastikan semua item dalam satu baris */
   position: relative; /* Diperlukan untuk elemen child */
@@ -282,11 +282,11 @@ section {
   align-items: center;
   flex-direction: column;
   padding: 15px 50px; /* Beri jarak antar item skill */
-  border: 2px solid #444;
-  box-shadow: 10px 10px #1e1e1e;
+  border: 2px solid #2a2a2a;
+  box-shadow: 10px 10px #000;
   margin: 10px;
   border-radius: 5px;
-  background: #1e1e1e
+  background: #161515;
 }
 
 @keyframes scroll {
@@ -302,14 +302,15 @@ section {
 .education-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 15px;
 }
 .education-box {
-  width: 49%;
-  border: 2px solid #444;
+  width: 48%;
+  border: 2px solid #2a2a2a;
   border-radius: 15px;
-  background: #1e1e1e;
+  background: #161515;
   padding: 10px 20px;
+  box-shadow: 10px 10px #000;
 }
 .education-title {
   display: flex;
@@ -326,12 +327,13 @@ section {
 }
 
 .certificate-box {
-  background: #1e1e1e;
-  border: 1px solid #444;
+  background: #161515;
+  border: 1px solid #2a2a2a;
   border-radius: 10px;
   overflow: hidden;
   width: calc(33.333% - 20px);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  /* box-shadow: 0 4px 8px rgba(0,0,0,0.2); */
+  box-shadow: 10px 10px #000;
   position: relative;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -392,12 +394,13 @@ section {
 }
 
 .project-box {
-  background: #1e1e1e;
-  border: 1px solid #444;
+  background: #161515;
+  border: 1px solid #2a2a2a;
   border-radius: 10px;
   overflow: hidden;
   width: calc(33.333% - 20px);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  /* box-shadow: 0 4px 8px rgba(0,0,0,0.2); */
+  box-shadow: 10px 10px #000;
   position: relative;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -440,7 +443,7 @@ section {
 
 .tech-chip {
   background-color: #2a2a2a;
-  border: 1px solid #444;
+  border: 1px solid #2a2a2a;
   color: #32cd32;
   padding: 4px 10px;
   border-radius: 15px;
@@ -478,8 +481,8 @@ section {
 
 /* === BAGIAN KONTAK (#contact) === */
 #contact #form-contact {
-  border: 1px solid #444;
-  background-color: #1e1e1e;
+  border: 1px solid #2a2a2a;
+  background-color: #161515;
   display: flex;
   flex-direction: column;
   padding: 20px;
@@ -493,7 +496,7 @@ section {
 #contact textarea {
   background-color: #2a2a2a;
   color: #e0e0e0;
-  border: 1px solid #444;
+  border: 1px solid #2a2a2a;
   border-radius: 10px;
   padding: 10px;
 }
@@ -529,10 +532,10 @@ section {
 }
 
 .popup-content {
-  background-color: #1e1e1e;
+  background-color: #161515;
   padding: 25px 30px;
   border-radius: 10px;
-  border: 1px solid #444;
+  border: 1px solid #2a2a2a;
   position: relative;
   max-width: 90%;
   max-height: 90vh;
@@ -559,7 +562,7 @@ footer {
   text-align: center;
   padding: 20px;
   margin-top: 20px;
-  background-color: #1e1e1e;
+  background-color: #161515;
 }
 footer .social-links {
   margin-bottom: 10px;
@@ -628,7 +631,7 @@ footer p {
     left: 0;
     width: 70%;
     height: 100vh;
-    background-color: #222;
+    background-color: #161515;
     z-index: 100;
     transform: translateX(-100%);
     transition: transform 0.3s ease-in-out;
@@ -649,7 +652,7 @@ footer p {
     text-align: left;
     margin: 0;
     padding: 15px 0 15px 15px;
-    border-bottom: 1px solid #444;
+    border-bottom: 1px solid #2a2a2a;
   }
   
   header nav li:last-child {
@@ -820,7 +823,7 @@ footer p {
 .card::after {
   content: '';
   position: absolute;
-  background: #222;
+  background: #161515;
   inset: 3px;
   border-radius: 17px;
   z-index: 1;
