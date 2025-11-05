@@ -533,6 +533,7 @@ section {
 }
 #contact textarea {
   margin-bottom: 10px;
+  resize: none;
 }
 
 /* === POP-UP OVERLAY === */
