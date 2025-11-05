@@ -39,6 +39,12 @@ section.visible {
 section#bio {
   transform: translateY(0);
 }
+section#bio.visible .left-column {
+  transform: translate(0, 0);
+}
+section#bio.visible .right-column {
+  transform: translate(0, 0);
+}
 
 /* === UTILITIES === */
 .highlight-text {
@@ -150,6 +156,10 @@ section {
   padding: 10px 0 10px 100px;
   display: flex;
   align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  transform: translate(-650px, -100px);
+  transition: transform 0.7s ease-out;
 }
 #bio .right-column {
   width: 50%;
@@ -157,10 +167,16 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
+  transform: translate(500px, 100px);
+  transition: transform 0.7s ease-out;
 }
 #hello-msg {
   color: #e0e0e0;
   font-size: 55px;
+}
+#tagline {
+  font-size: 20px;
+  margin-top: -20px;
 }
 #profile-photo {
   width: 300px;
@@ -169,6 +185,9 @@ section {
   border-radius: 15px;
   /* box-shadow: -2px -2px 15px 2px #32cd32, 2px 2px 15px 4px #00ffff; */
   animation: logo-spin 5s linear infinite;
+}
+#hello-msg #profession {
+  font-weight: normal;
 }
 #hello-msg #profession::after {
   content: '|';
@@ -184,7 +203,11 @@ section {
   height: auto;
   min-height: auto;
   padding: 0 100px 10px;
-  transform: translateY(-50px);
+  transform: translateY(-25px);
+  transition: transform 0.5s ease-out;
+}
+#know-more.visible {
+  transform: translateY(-70px);
 }
 .btn-know-more {
   border: none;

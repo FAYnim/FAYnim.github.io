@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // --- EFEK MENGETIK UNTUK PROFESI ---
   const professionEl = document.getElementById('profession');
-  const professions = ["Fullstack Developer", "IoT Engineer", "Pentester", "Tech Enthusiast"];
+  const professions = ["Fullstack Developer", "IoT Engineer", "Content Creator", "Tech Enthusiast"];
   let professionIndex = 0;
   let charIndex = 0;
   let isDeleting = false;
