@@ -311,6 +311,9 @@ section {
   border-radius: 5px;
   background: #161515;
 }
+.skill-logo {
+  margin-bottom: 5px;
+}
 
 @keyframes scroll {
   from {
