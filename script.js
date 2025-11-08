@@ -143,7 +143,25 @@ const demo = (demo_url) => {
 }
 
 // === Fitur Multi Language ===
+let langData = null;
+
+async function loadLanguageData() {
+    try {
+        const response = await fetch('lang.json');
+        if (!response.ok) {
+            throw new Error('Gagal memuat file lang.json');
+        }
+        langData = await response.json();
+        console.log('Data bahasa berhasil dimuat:', langData);
+    } catch (error) {
+        console.error('Error memuat data bahasa:', error);
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
+    // Muat data bahasa terlebih dahulu
+    loadLanguageData();
+    
     const langContainer = document.querySelector('.lang-switch-container');
     const langButtons = document.querySelectorAll('.btn-switch-lang');
     
@@ -164,7 +182,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 langContainer.classList.remove('english');
             }
             
-            switchLanguage(isEnglish ? 'en' : 'id');
+            switchLanguage(isEnglish ? 'EN' : 'ID');
         });
     });
 });
@@ -172,10 +190,44 @@ document.addEventListener('DOMContentLoaded', function() {
 function switchLanguage(lang) {
     console.log('Mengganti ke bahasa:', lang);
     
-    // Contoh bagaimana Anda mungkin mengimplementasikan pergantian bahasa:
-    // if (lang === 'en') {
-    //     // Ubah semua teks ke bahasa Inggris
-    // } else {
-    //     // Ubah semua teks ke bahasa Indonesia
-    // }
+    if (!langData) {
+        console.error('Data bahasa belum dimuat');
+        return;
+    }
+    
+    const currentLangData = langData[lang];
+    if (!currentLangData) {
+        console.error('Data untuk bahasa', lang, 'tidak ditemukan');
+        return;
+    }
+    
+    // Ganti teks berdasarkan data bahasa
+    const elementsToTranslate = {
+        'tagline': currentLangData['tagline'],
+        'welcome-msg': currentLangData['welcome-msg'],
+        'about-me-title': currentLangData['about-me-title'],
+        'skills-title': currentLangData['skills-title'],
+        'education-title': currentLangData['education-title'],
+        'certificates-title': currentLangData['certificates-title'],
+        'project-title': currentLangData['project-title'],
+        'contact-title': currentLangData['contact-title'],
+
+        'about-me-text': currentLangData['about-me-text'],
+
+        'btn-download-cv': "<i class='fa-solid fa-file-arrow-down'></i>" + currentLangData['btn-download-cv'],
+        'btn-linkedin': "<i class='fa-brands fa-linkedin'></i>" + currentLangData['btn-linkedin'],
+    };
+    
+    // Update elemen-elemen dengan teks baru
+    Object.keys(elementsToTranslate).forEach(elementId => {
+        const element = document.getElementById(elementId);
+        if (element) {
+            // Gunakan innerHTML untuk elemen yang mengandung HTML (icon)
+            if (elementId === 'btn-download-cv' || elementId === 'btn-linkedin') {
+                element.innerHTML = elementsToTranslate[elementId];
+            } else {
+                element.textContent = elementsToTranslate[elementId];
+            }
+        }
+    });
 }

@@ -74,12 +74,12 @@
       </section>
       <section class="normal-section" id="know-more">
         <button class="btn-know-more">
-          <a href="asset/resume-faris.pdf" download="Resume-Faris-AY.pdf">
+          <a href="asset/resume-faris.pdf" download="Resume-Faris-AY.pdf" id="btn-download-cv">
             <i class="fa-solid fa-file-arrow-down"></i> Unduh CV
           </a>
         </button>
         <button class="btn-know-more" onclick="terhubung()">
-          <a href="https://www.linkedin.com/in/faris-ay" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.linkedin.com/in/faris-ay" target="_blank" rel="noopener noreferrer" id="btn-linkedin">
             <i class="fa-brands fa-linkedin"></i> Profil Linkedin
           </a>
         </button>
@@ -90,10 +90,10 @@
       </h2>
 
       <section class="normal-section" id="about-me">
-          <h2 class="section-title">Tentang Saya</h2>
+          <h2 class="section-title" id="about-me-title">Tentang Saya</h2>
           <div class="about-me-container card">
             <div class="about-me-box">
-              <p>
+              <p id="about-me-text">
                 Saya adalah seorang pelajar yang sedang mendalami dunia IT. Terutama
                 pada pengembangan perangkat lunak alias web developer. Dari dulu
                 saya sangat tertarik dengan teknologi. Di mulai dari game Minecraft
@@ -125,7 +125,7 @@
       </section>
 
       <section class="normal-section" id="skills">
-          <h2 class="section-title">Skills</h2>        
+          <h2 class="section-title" id="skills-title">Keahlian</h2>        
           <div class="skill-container">
             <div class="skill-track">
               <div class="skill-box">
@@ -212,7 +212,7 @@
       </section>
       
       <section class="normal-section" id="education">
-        <h2 class="section-title">Pendidikan</h2>
+        <h2 class="section-title" id="education-title">Pendidikan</h2>
         <div class="education-container">
           <div class="education-box">
             <div class="education-title">
@@ -239,7 +239,7 @@
       </section>
 
       <section class="normal-section" id="certificates">
-        <h2 class="section-title">Sertifikat</h2>
+        <h2 class="section-title" id="certificates-title">Sertifikat</h2>
         <div class="certificate-container">
           <div class="certificate-box" 
                onclick="showPopup(
@@ -273,7 +273,7 @@
       </section>
 
       <section class="normal-section" id="project">
-        <h2 class="section-title">Proyek</h2>
+        <h2 class="section-title" id="project-title">Proyek</h2>
         <div class="project-container">
           <div class="project-box">
             <img src="asset/screenshot-proyek-1-website-portfolio.png" alt="Screenshot Proyek 1 Website Portofolio" loading="lazy">
@@ -314,7 +314,7 @@
       </section>
 
       <section class="normal-section" id="contact">
-        <h2 class="section-title">Kontak</h2>
+        <h2 class="section-title" id="contact-title">Kontak</h2>
         <form id="form-contact" method="post">
           <label for="inp-name">Nama</label>
           <input type="text" name="name" id="inp-name" placeholder="John Doe" />

@@ -1,0 +1,34 @@
+{
+  "ok": "ok",
+  "ID": {
+    "tagline": "Membangun solusi cerdas dengan AI dan teknologi modern untuk membantu bisnis dan kreator bekerja lebih efisien",
+    "welcome-msg": "Selamat Datang di Portofolio Saya",
+    "about-me-title": "Tentang Saya",
+    "skills-title": "Keahlian",
+    "education-title": "Pendidikan",
+    "certificates-title": "Sertifikat",
+    "project-title": "Proyek",
+    "contact-title": "Kontak",
+
+    "about-me-text": "Saya adalah seorang pelajar yang sedang mendalami dunia IT. Terutama pada pengembangan perangkat lunak alias web developer. Dari dulu saya sangat tertarik dengan teknologi. Di mulai dari game Minecraft dimana aku mencoba membuat mini game dari kode command block. Saya berpengalaman menyelesaikan masalah dengan membuat alat-alat yang berkaitan dengan teknologi. Saya pernah membuat Website, IoT, Chatbot, dan semacamnya.",
+
+    "btn-download-cv": " Unduh CV",
+    "btn-linkedin": " Profil LinkedIn"
+  },
+  "EN": {
+    "tagline": "Building intelligent solutions with AI and modern technology to help businesses and creators work more efficiently.",
+    "welcome-msg": "Welcome to My Portfolio",
+    "about-me-title": "About Me",
+    "skills-title": "Skills",
+    "education-title": "Education",
+    "certificates-title": "Certificates",
+    "project-title": "Project",
+    "contact-title": "Contact",
+
+    "about-me-text": "I am an IT student specializing in web development and software engineering. I have a long-standing passion for technology, initially sparked by coding experiments in games like Minecraft (e.g., using command blocks for mini-games). I have a proven track record of creating technological tools to solve problems, with experience in building Websites, IoT devices, Chatbots, and other related projects.",
+
+    "btn-download-cv": " Download CV",
+    "btn-linkedin": " LinkedIn Profile"
+
+  }
+}
