@@ -752,21 +752,26 @@ footer p {
   #profile-photo {
     width: 200px;
     height: 200px;
-    margin-top: 20px;
+    margin-top: 0;       /* pastikan foto tidak mendorong ke bawah */
+    margin-bottom: 8px;  /* beri sedikit jarak di bawah foto */
+    border-radius: 12px;
+    display: block;
   }
   /* -- Bagian Tombol Know More -- */
   #know-more {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    padding: 0;
+    margin-top: 45px;
     justify-content: center;
     align-items: center;
-    gap: 10px; /* Memberi jarak antar tombol */
-    transform: translateY(-20px); /* Mengurangi efek geser ke atas untuk mobile */
-    padding-top: 20px;
+    gap: 10px;
   }
   .btn-know-more {
-    padding: 10px 20px;
     border-radius: 15px;
+    width: 40%;
+    font-size: 11px;
+    margin: 0;
   }
   .project-container {
     flex-direction: column;
@@ -799,6 +804,51 @@ footer p {
   .tech-chip {
     font-size: 11px;
     padding: 3px 8px;
+  }
+
+  #bio {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #bio .right-column {
+    order: -1;
+    transform: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  #bio .left-column {
+    order: 0;
+    transform: none;
+    width: 100%;
+    padding: 10px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #hello-msg {
+    text-align: center;
+    font-size: 1.4em;
+    line-height: 1.2;
+    margin: 4px 0 0 0;
+  }
+
+  #tagline {
+    margin-top: 12px !important;
+    font-size: 15px;
+    text-align: center;
+  }
+  
+  #profile-photo {
+    width: 200px;
+    height: 200px;
+    margin: 0 0 15px 0;
+    border-radius: 12px;
+    display: block;
   }
 }
 
