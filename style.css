@@ -770,8 +770,9 @@ footer p {
   .btn-know-more {
     border-radius: 15px;
     width: 40%;
-    font-size: 11px;
+    font-size: 13px;
     margin: 0;
+    padding: 12px 8px;
   }
   .project-container {
     flex-direction: column;
@@ -790,6 +791,9 @@ footer p {
   }
   .certificate-box {
     width: 100%;
+  }
+  .certificate-box img {
+    height: auto;
   }
   .project-box {
     width: 100%;
@@ -966,6 +970,7 @@ footer p {
   .lang-switch-container {
     margin: 10px 0;
     justify-content: center;
+    width: 100px;
   }
   
   .btn-switch-lang {
