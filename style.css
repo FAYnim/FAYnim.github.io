@@ -905,3 +905,72 @@ footer p {
   border-radius: 17px;
   z-index: 1;
 }
+
+/* === MULTI LANGUAGE TOGGLE SWITCH === */
+.lang-switch-container {
+  position: relative;
+  display: flex;
+  background: #2a2a2a;
+  border-radius: 25px;
+  padding: 3px;
+  border: 1px solid #32cd32;
+  overflow: hidden;
+}
+
+.lang-switch-container::before {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: calc(50% - 3px);
+  height: calc(100% - 6px);
+  background: linear-gradient(45deg, #32cd32, #00ffff);
+  border-radius: 20px;
+  transition: transform 0.3s ease;
+  z-index: 1;
+}
+
+.lang-switch-container.english::before {
+  transform: translateX(100%);
+}
+
+.btn-switch-lang {
+  position: relative;
+  background: transparent;
+  border: none;
+  color: #e0e0e0;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  z-index: 2;
+  min-width: 45px;
+}
+
+.btn-switch-lang.active {
+  color: #121212;
+}
+
+.btn-switch-lang:hover {
+  color: #fff;
+}
+
+.btn-switch-lang:not(.active):hover {
+  background: rgba(50, 205, 50, 0.1);
+}
+
+/* Mobile responsive for language switch */
+@media (max-width: 600px) {
+  .lang-switch-container {
+    margin: 10px 0;
+    justify-content: center;
+  }
+  
+  .btn-switch-lang {
+    font-size: 12px;
+    padding: 6px 12px;
+    min-width: 40px;
+  }
+}

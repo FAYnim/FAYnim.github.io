@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	  menuToggle.addEventListener('click', () => {
 	    nav.classList.toggle('active');
 	    
-	    // Optional: Ubah ikon menu menjadi X ketika aktif
+	    // Opsional: Ubah ikon menu menjadi X ketika aktif
 	    if (nav.classList.contains('active')) {
 	      menuToggle.innerHTML = '✕';
 	    } else {
@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
     typeWriter();
   }
 
-  // --- POP-UP LOGIC ---
+  // --- LOGIKA POP-UP ---
   const popupOverlay = document.getElementById('popup-overlay');
   const popupClose = document.getElementById('popup-close');
   const popupBody = document.getElementById('popup-body');
@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
     popupBody.innerHTML = ''; // Kosongkan konten saat ditutup
   }
 
-  // Event listener untuk tombol close
+  // Event listener untuk tombol tutup
   popupClose.addEventListener('click', hidePopup);
 
   // Event listener untuk menutup saat klik di luar area konten
@@ -140,4 +140,42 @@ const terhubung = () => {
 
 const demo = (demo_url) => {
   window.open(demo_url, '_blank');
+}
+
+// === Fitur Multi Language ===
+document.addEventListener('DOMContentLoaded', function() {
+    const langContainer = document.querySelector('.lang-switch-container');
+    const langButtons = document.querySelectorAll('.btn-switch-lang');
+    
+    langButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const isEnglish = this.textContent === 'EN';
+            
+            // Hapus kelas active dari semua tombol
+            langButtons.forEach(btn => btn.classList.remove('active'));
+            
+            // Tambahkan kelas active ke tombol yang diklik
+            this.classList.add('active');
+            
+            // Toggle kelas container untuk animasi geser
+            if (isEnglish) {
+                langContainer.classList.add('english');
+            } else {
+                langContainer.classList.remove('english');
+            }
+            
+            switchLanguage(isEnglish ? 'en' : 'id');
+        });
+    });
+});
+
+function switchLanguage(lang) {
+    console.log('Mengganti ke bahasa:', lang);
+    
+    // Contoh bagaimana Anda mungkin mengimplementasikan pergantian bahasa:
+    // if (lang === 'en') {
+    //     // Ubah semua teks ke bahasa Inggris
+    // } else {
+    //     // Ubah semua teks ke bahasa Indonesia
+    // }
 }
