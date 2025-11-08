@@ -216,6 +216,38 @@ function switchLanguage(lang) {
 
         'btn-download-cv': "<i class='fa-solid fa-file-arrow-down'></i>" + currentLangData['btn-download-cv'],
         'btn-linkedin': "<i class='fa-brands fa-linkedin'></i>" + currentLangData['btn-linkedin'],
+
+        'nav-about-me': "<i class='fa-solid fa-user'></i>" + currentLangData['nav-about-me'],
+        'nav-skills': "<i class='fa-solid fa-bolt-lightning'></i>" + currentLangData['nav-skills'],
+        'nav-certificates': "<i class='fa-solid fa-award'></i>" + currentLangData['nav-certificates'],
+        'nav-project': "<i class='fa-solid fa-bullseye'></i>" + currentLangData['nav-project'],
+        'nav-contact': "<i class='fa-solid fa-phone'></i>" + currentLangData['nav-contact'],
+
+        'about-name': currentLangData['about-name'],
+        'about-origin': currentLangData['about-origin'],
+        'about-experience': currentLangData['about-experience'],
+        'about-projects-completed': currentLangData['about-projects-completed'],
+        'about-experience-years': currentLangData['about-experience-years'],
+        'about-projects-count': currentLangData['about-projects-count'],
+
+        'education-year-1': currentLangData['education-year-1'],
+        'education-year-2': currentLangData['education-year-2'],
+        'education-year-3': currentLangData['education-year-3'],
+
+        'coming-soon': currentLangData['coming-soon'],
+        'coming-soon-2': currentLangData['coming-soon'],
+        'coming-soon-3': currentLangData['coming-soon'],
+
+        'project-website-cv': currentLangData['project-website-cv'],
+        'project-portfolio-desc': currentLangData['project-portfolio-desc'],
+        'btn-demo': currentLangData['btn-demo'],
+
+        'contact-name-label': currentLangData['contact-name-label'],
+        'contact-email-label': currentLangData['contact-email-label'],
+        'contact-message-label': currentLangData['contact-message-label'],
+
+        'footer-made-with-love': currentLangData['footer-made-with-love'],
+        'footer-copyright': currentLangData['footer-copyright']
     };
     
     // Update elemen-elemen dengan teks baru
@@ -223,11 +255,31 @@ function switchLanguage(lang) {
         const element = document.getElementById(elementId);
         if (element) {
             // Gunakan innerHTML untuk elemen yang mengandung HTML (icon)
-            if (elementId === 'btn-download-cv' || elementId === 'btn-linkedin') {
+            if (elementId.includes('btn-') || elementId.includes('nav-')) {
                 element.innerHTML = elementsToTranslate[elementId];
             } else {
                 element.textContent = elementsToTranslate[elementId];
             }
         }
     });
+
+    // Update placeholders
+    const placeholderElements = {
+        'inp-name': currentLangData['contact-name-placeholder'],
+        'inp-email': currentLangData['contact-email-placeholder'],
+        'inp-message': currentLangData['contact-message-placeholder']
+    };
+
+    Object.keys(placeholderElements).forEach(elementId => {
+        const element = document.getElementById(elementId);
+        if (element) {
+            element.placeholder = placeholderElements[elementId];
+        }
+    });
+
+    // Update submit button value
+    const submitBtn = document.getElementById('btn-send');
+    if (submitBtn) {
+        submitBtn.value = currentLangData['btn-send'];
+    }
 }

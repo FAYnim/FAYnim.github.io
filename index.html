@@ -34,7 +34,7 @@
           <li><a href="#welcome-msg" id="nav-about-me">
             <i class="fa-solid fa-user"></i> Tentang Saya
           </a></li>
-          <li><a href="#skills">
+          <li><a href="#skills" id="nav-skills">
             <i class="fa-solid fa-bolt-lightning"></i> Keahlian
           </a></li>
           <li><a href="#certificates" id="nav-certificates">
@@ -105,20 +105,20 @@
             </div>
             <div class="about-me-box">
               <div>
-                <span class="about-me-title">Nama</span>
+                <span class="about-me-title" id="about-name">Nama</span>
                 <span class="about-me-text">Faris Adillah Y</span>
               </div>
               <div>
-                <span class="about-me-title">Asal</span>
+                <span class="about-me-title" id="about-origin">Asal</span>
                 <span class="about-me-text">Indonesia</span>
               </div>
               <div>
-                <span class="about-me-title">Pengalaman</span>
-                <span class="about-me-number">3 Tahun</span>
+                <span class="about-me-title" id="about-experience">Pengalaman</span>
+                <span class="about-me-number" id="about-experience-years">3 Tahun</span>
               </div>
               <div>
-                <span class="about-me-title">Proyek diselesaikan</span>
-                <span class="about-me-number">2</span>
+                <span class="about-me-title" id="about-projects-completed">Proyek diselesaikan</span>
+                <span class="about-me-number" id="about-projects-count">2</span>
               </div>
             </div>
           </div>
@@ -218,21 +218,21 @@
             <div class="education-title">
                 <img src="asset/sd-fix.png" alt="SD Muhammadiyah 18" height="50" loading="lazy">
                 <h3>SD Muhammadiyah 18 Surabaya</h3>
-                <h3 class="education-year">2016 - 2022</h3>
+                <h3 class="education-year" id="education-year-1">2016 - 2022</h3>
             </div>
           </div>
           <div class="education-box">
             <div class="education-title">
                 <img src="asset/smp-fix.png" alt="Logo SMP Negeri 6 Surabaya" height="60" loading="lazy">
                 <h3>SMP Negeri 6 Surabaya</h3>
-                <h3 class="education-year">2022 - 2025</h3>
+                <h3 class="education-year" id="education-year-2">2022 - 2025</h3>
             </div>
           </div>
           <div class="education-box">
             <div class="education-title">
                 <img src="asset/smk-fix.png" alt="Logo SMK Negeri 1 Surabaya" height="60" loading="lazy">
                 <h3>SMK Negeri 1 Surabaya</h3>
-                <h3 class="education-year">2025 - Sekarang</h3>
+                <h3 class="education-year" id="education-year-3">2025 - Sekarang</h3>
             </div>
           </div>
         </div>
@@ -266,7 +266,7 @@
               <i class="fa-solid fa-plus"></i>
             </div>
             <div class="certificate-info">
-              <h3>Coming Soon</h3>
+              <h3 id="coming-soon">Coming Soon</h3>
             </div>
           </div>
         </div>
@@ -278,14 +278,14 @@
           <div class="project-box">
             <img src="asset/screenshot-proyek-1-website-portfolio.png" alt="Screenshot Proyek 1 Website Portofolio" loading="lazy">
             <div class="project-info">
-              <h3>Website CV</h3>
-              <p>Website Portfolio Faris</p>
+              <h3 id="project-website-cv">Website CV</h3>
+              <p id="project-portfolio-desc">Website Portfolio Faris</p>
               <div class="tech-stack">
                 <span class="tech-chip">HTML</span>
                 <span class="tech-chip">CSS</span>
                 <span class="tech-chip">JavaScript</span>
               </div>
-              <button onclick="demo('https://faynim.github.io')">Demo</button>
+              <button onclick="demo('https://faynim.github.io')" id="btn-demo">Demo</button>
             </div>
           </div>
           <div class="project-box coming-soon">
@@ -293,7 +293,7 @@
               <i class="fa-solid fa-clock"></i>
             </div>
             <div class="project-info">
-              <h3>Coming Soon</h3>
+              <h3 id="coming-soon-2">Coming Soon</h3>
               <div class="tech-stack">
                 <!-- <span class="tech-chip">TBD</span> -->
               </div>
@@ -304,7 +304,7 @@
               <i class="fa-solid fa-clock"></i>
             </div>
             <div class="project-info">
-              <h3>Coming Soon</h3>
+              <h3 id="coming-soon-3">Coming Soon</h3>
               <div class="tech-stack">
                 <!-- <span class="tech-chip">TBD</span> -->
               </div>
@@ -316,10 +316,10 @@
       <section class="normal-section" id="contact">
         <h2 class="section-title" id="contact-title">Kontak</h2>
         <form id="form-contact" method="post">
-          <label for="inp-name">Nama</label>
+          <label for="inp-name" id="contact-name-label">Nama</label>
           <input type="text" name="name" id="inp-name" placeholder="John Doe" />
 
-          <label for="inp-email">Email</label>
+          <label for="inp-email" id="contact-email-label">Email</label>
           <input
             type="text"
             name="email"
@@ -327,7 +327,7 @@
             placeholder="johndoe@gmail.com"
           />
 
-          <label for="inp-message">Pesan</label>
+          <label for="inp-message" id="contact-message-label">Pesan</label>
           <textarea
             name="message"
             id="inp-message"
@@ -339,7 +339,7 @@
           <input
             type="submit"
             name="kirim-kontak"
-            id="kirim-kontak"
+            id="btn-send"
             value="Kirim"
           />
         </form>
@@ -382,8 +382,8 @@
           ><i class="fa-brands fa-threads"></i></a
         >
       </div>
-      <p>Dibuat dengan &#x2764 oleh Faris</p>
-      <p>&copy; 2025. All rights reserved.</p>
+      <p id="footer-made-with-love">Dibuat dengan &#x2764 oleh Faris</p>
+      <p id="footer-copyright">&copy; 2025. All rights reserved.</p>
     </footer>
 
     <script src="script.js" defer></script>
