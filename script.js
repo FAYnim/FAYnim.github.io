@@ -15,14 +15,12 @@ document.addEventListener('DOMContentLoaded', () => {
     observer.observe(section);
   });
 
-  // --- Mengatur posisi, ukuran, dan durasi acak untuk bentuk latar belakang ---
+  // === Pengatur Shape ===
   const shapes = document.querySelectorAll('.background-shapes .shape');
   shapes.forEach(shape => {
-    // Ukuran acak antara 20px dan 120px
+    // Pengacak bentuk shape
     const size = Math.random() * 100 + 20;
-    // Posisi horizontal acak antara 0% dan 90% dari lebar layar
     const leftPosition = Math.random() * 90; 
-    // Durasi animasi acak antara 20 dan 40 detik
     const animationDuration = Math.random() * 20 + 20; 
 
     shape.style.width = `${size}px`;
@@ -31,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
     shape.style.animationDuration = `${animationDuration}s`;
   });
 
-	// --- TOGGLE SIDEBAR MOBILE ---
+	// === TOGGLE SIDEBAR MOBILE ===
 	const menuToggle = document.getElementById('menu-toggle');
 	const nav = document.querySelector('header nav');
 
@@ -39,7 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	  menuToggle.addEventListener('click', () => {
 	    nav.classList.toggle('active');
 	    
-	    // Opsional: Ubah ikon menu menjadi X ketika aktif
 	    if (nav.classList.contains('active')) {
 	      menuToggle.innerHTML = '✕';
 	    } else {
@@ -47,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	    }
 	  });
 	  
-	  // Tutup menu ketika link di klik (opsional, untuk UX yang lebih baik)
+	  // Tutup menu ketika link di klik
 	  const navLinks = document.querySelectorAll('header nav a');
 	  navLinks.forEach(link => {
 	    link.addEventListener('click', () => {
@@ -56,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	    });
 	  });
 	  
-	  // Tutup menu ketika mengklik di luar area navigasi (opsional)
+	  // Tutup menu ketika mengklik di luar area
 	  document.addEventListener('click', (e) => {
 	    if (!nav.contains(e.target) && !menuToggle.contains(e.target)) {
 	      nav.classList.remove('active');
@@ -65,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	  });
   }
   
-  // --- EFEK MENGETIK UNTUK PROFESI ---
+  // === Typing Effect ===
   const professionEl = document.getElementById('profession');
   const professions = ["Fullstack Developer", "IoT Engineer", "Content Creator", "Tech Enthusiast"];
   let professionIndex = 0;
@@ -101,46 +98,35 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(typeWriter, typingSpeed);
   }
 
-  // Mulai efek mengetik setelah halaman dimuat
+  // Mulai typing effect
   if(professionEl) {
     typeWriter();
   }
 
-  // --- LOGIKA POP-UP ---
+  // === Custom Pop-up ===
   const popupOverlay = document.getElementById('popup-overlay');
   const popupClose = document.getElementById('popup-close');
   const popupBody = document.getElementById('popup-body');
 
-  // Fungsi untuk menampilkan pop-up
+
   window.showPopup = (content) => {
     popupBody.innerHTML = content;
     popupOverlay.classList.remove('hidden');
   }
 
-  // Fungsi untuk menyembunyikan pop-up
   const hidePopup = () => {
     popupOverlay.classList.add('hidden');
     popupBody.innerHTML = ''; // Kosongkan konten saat ditutup
   }
 
-  // Event listener untuk tombol tutup
   popupClose.addEventListener('click', hidePopup);
 
-  // Event listener untuk menutup saat klik di luar area konten
   popupOverlay.addEventListener('click', (e) => {
     if (e.target === popupOverlay) {
       hidePopup();
     }
   });
 });
-
-const terhubung = () => {
-  window.open('https://www.linkedin.com/in/faris-ay', '_blank');
-};
-
-const demo = (demo_url) => {
-  window.open(demo_url, '_blank');
-}
 
 // === Fitur Multi Language ===
 let langData = null;
@@ -159,7 +145,7 @@ async function loadLanguageData() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Muat data bahasa terlebih dahulu
+    // Load data
     loadLanguageData();
     
     const langContainer = document.querySelector('.lang-switch-container');
@@ -175,7 +161,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Tambahkan kelas active ke tombol yang diklik
             this.classList.add('active');
             
-            // Toggle kelas container untuk animasi geser
+            // Animasi geser
             if (isEnglish) {
                 langContainer.classList.add('english');
             } else {
@@ -188,7 +174,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function switchLanguage(lang) {
-    console.log('Mengganti ke bahasa:', lang);
+    // console.log('Mengganti ke bahasa:', lang);
     
     if (!langData) {
         console.error('Data bahasa belum dimuat');
@@ -201,7 +187,7 @@ function switchLanguage(lang) {
         return;
     }
     
-    // Ganti teks berdasarkan data bahasa
+    // Ganti teks di elemen
     const elementsToTranslate = {
         'tagline': currentLangData['tagline'],
         'welcome-msg': currentLangData['welcome-msg'],
@@ -254,7 +240,6 @@ function switchLanguage(lang) {
     Object.keys(elementsToTranslate).forEach(elementId => {
         const element = document.getElementById(elementId);
         if (element) {
-            // Gunakan innerHTML untuk elemen yang mengandung HTML (icon)
             if (elementId.includes('btn-') || elementId.includes('nav-')) {
                 element.innerHTML = elementsToTranslate[elementId];
             } else {
@@ -282,4 +267,13 @@ function switchLanguage(lang) {
     if (submitBtn) {
         submitBtn.value = currentLangData['btn-send'];
     }
+}
+
+// Other Functions
+const terhubung = () => {
+  window.open('https://www.linkedin.com/in/faris-ay', '_blank');
+};
+
+const demo = (demo_url) => {
+  window.open(demo_url, '_blank');
 }
