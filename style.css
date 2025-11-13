@@ -282,8 +282,34 @@ section {
   color: #32cd32;
   font-size: 30px;
 }
+.about-me-detail {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+}
+#btn-talentDNA {
+  background-color: #0b700b;
+  border: 2px solid #0b700b;
+  color: #fff;
+  padding: 20px 32px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 50px;
+  transition: background-color 0.3s;
+  width: auto;
+  max-height: 40px;
+  line-height: 0.1;
+}
+#btn-talentDNA a {
+  color: inherit;
+}
+#btn-talentDNA:hover {
+  background-color: inherit;
+  color: #32cd32;
+  box-shadow: 2px 2px 5px #00ffff, -2px -2px 5px #32cd32;
+}
 
-
+/* --- BAGIAN SKILLS (#skills) --- */
 .skill-container {
   width: 100%;
   background-color: #121212;
