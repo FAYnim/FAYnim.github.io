@@ -320,34 +320,39 @@
 
       <section class="normal-section" id="contact">
         <h2 class="section-title" id="contact-title">Kontak</h2>
-        <form id="form-contact" method="post">
-          <label for="inp-name" id="contact-name-label">Nama</label>
-          <input type="text" name="name" id="inp-name" placeholder="John Doe" />
+          <form id="form-contact" method="post">
+            <div class="contact-container">
+              <label for="inp-name" id="contact-name-label">Nama</label>
+              <input type="text" name="name" id="inp-name" placeholder="John Doe" />
 
-          <label for="inp-email" id="contact-email-label">Email</label>
-          <input
-            type="text"
-            name="email"
-            id="inp-email"
-            placeholder="johndoe@gmail.com"
-          />
+              <label for="inp-email" id="contact-email-label">Email</label>
+              <input
+                type="text"
+                name="email"
+                id="inp-email"
+                placeholder="johndoe@gmail.com"
+              />
 
-          <label for="inp-message" id="contact-message-label">Pesan</label>
-          <textarea
-            name="message"
-            id="inp-message"
-            cols="30"
-            rows="10"
-            placeholder="Ayo kita bekerja sama!"
-          ></textarea>
+              <label for="inp-message" id="contact-message-label">Pesan</label>
+              <textarea
+                name="message"
+                id="inp-message"
+                cols="30"
+                rows="10"
+                placeholder="Ayo kita bekerja sama!"
+              ></textarea>
 
-          <input
-            type="submit"
-            name="kirim-kontak"
-            id="btn-send"
-            value="Kirim"
-          />
-        </form>
+              <input
+                type="submit"
+                name="kirim-kontak"
+                id="btn-send"
+                value="Kirim"
+              />
+            </div>
+            <div class="map-container">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3957.432748024825!2d112.73140327411267!3d-7.305182371817005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7fb9ef4d7d9ed%3A0x5959ad479fd46d02!2sSMK%20Negeri%201%20Surabaya!5e0!3m2!1sid!2sid!4v1762993981510!5m2!1sid!2sid" width="500" height="407" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </form>
       </section>
     </main>
 

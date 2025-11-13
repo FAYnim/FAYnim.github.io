@@ -536,10 +536,28 @@ section {
   border: 1px solid #2a2a2a;
   background-color: #161515;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 10px;
   padding: 20px;
   border-radius: 15px;
 }
+#form-contact .contact-container {
+  display: flex;
+  flex-direction: column;
+  width: 49%;
+}
+#form-contact .map-container {
+  width: 49%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#form-contact .map-container iframe {
+  border: 1px solid #2a2a2a;
+  border-radius: 10px;
+}
+
 #contact label {
   margin-top: 10px;
   margin-bottom: 10px;
@@ -551,6 +569,12 @@ section {
   border: 1px solid #2a2a2a;
   border-radius: 10px;
   padding: 10px;
+  transition: outline 0.2s, border-color 0.2s;
+}
+#contact input:hover,
+#contact textarea:hover {
+  outline: 1px solid #32cd32;
+  border-color: #32cd32;
 }
 #contact input:focus,
 #contact textarea:focus {
