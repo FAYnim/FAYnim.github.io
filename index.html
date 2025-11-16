@@ -4,7 +4,46 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Faris AY - Portofolio</title>
+    <title>Faris AY - Fullstack Developer | AI & Web Development Portfolio Indonesia</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Faris AY - Fullstack Developer & AI Enthusiast from Indonesia. Experienced in web development, IoT, and modern technology solutions. View my portfolio and projects.">
+    <meta name="keywords" content="Faris AY, web developer, fullstack developer, AI developer, IoT engineer, portfolio, Indonesia developer, JavaScript, PHP, MySQL">
+    <meta name="author" content="Faris Adillah Yufiansyah">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Faris AY - Fullstack Developer Portfolio">
+    <meta property="og:description" content="Building intelligent solutions with AI and modern technology. Explore my projects, skills, and experience in web development.">
+    <meta property="og:image" content="https://faynim.github.io/FAY-Developer.webp">
+    <meta property="og:url" content="https://faynim.github.io">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Faris AY Portfolio">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Faris AY - Fullstack Developer Portfolio">
+    <meta name="twitter:description" content="Building intelligent solutions with AI and modern technology">
+    <meta name="twitter:image" content="https://faynim.github.io/FAY-Developer.webp">
+    
+    <!-- Language and Localization -->
+    <link rel="alternate" hreflang="en" href="https://faynim.github.io?lang=en">
+    <link rel="alternate" hreflang="id" href="https://faynim.github.io?lang=id">
+    <link rel="alternate" hreflang="x-default" href="https://faynim.github.io">
+    
+    <!-- Technical SEO -->
+    <link rel="canonical" href="https://faynim.github.io/">
+    <meta name="theme-color" content="#32cd32">
+    
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="style.css" as="style">
+    <link rel="preload" href="FAY-Developer.webp" as="image">
+    
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="fontawesome/css/all.min.css">
     <link rel="shortcut icon" href="FAY-Developer.webp" type="image/x-icon">
@@ -20,16 +59,16 @@
     </div>
     <header>
       <div class="logo-container">
-        <img id="logo" src="FAY-Developer.webp" alt="FAY Developer" loading="lazy"/>
-        <h1>Faris AY</h1>
+        <img id="logo" src="FAY-Developer.webp" alt="FAY Developer Logo" loading="lazy"/>
+        <span class="logo-text">Faris AY</span>
       </div>
 		<button class="menu-icon" id="menu-toggle">&#9776;</button>
 
       <nav>
         <ul>
           <li><a href="/" class="logo-container" id="nav-logo">
-            <img id="logo" src="FAY-Developer.webp" alt="FAY Developer" loading="lazy"/> 
-            <h2>Faris AY</h2>
+            <img id="logo" src="FAY-Developer.webp" alt="FAY Developer Logo" loading="lazy"/> 
+            <span class="nav-logo-text">Faris AY</span>
           </a></li>
           <li><a href="#welcome-msg" id="nav-about-me">
             <i class="fa-solid fa-user"></i> Tentang Saya
@@ -57,19 +96,19 @@
       </nav>
     </header>
 
-    <main>
+    <main id="main-content" role="main">
       <section class="flex" id="bio">
         <div class="left-column">
-          <h2 id="hello-msg">
+          <h1 id="hello-msg">
             Faris Adillah Yufiansyah<br>
             <span class="highlight-text" id="profession"> </span>
-          </h2>
+          </h1>
           <p id="tagline">
             Membangun solusi cerdas dengan AI dan teknologi modern untuk membantu bisnis dan kreator bekerja lebih efisien.
           </p>
         </div>
         <div class="right-column">
-          <img id="profile-photo" src="photo-profile-2.png" alt="Faris Adillah Y" loading="lazy" />
+          <img id="profile-photo" src="photo-profile-2.png" alt="Faris Adillah Yufiansyah - Fullstack Developer Profile Photo" loading="lazy" />
         </div>
       </section>
       <section class="normal-section" id="know-more">
@@ -90,7 +129,7 @@
       </h2>
 
       <section class="normal-section" id="about-me">
-          <h2 class="section-title" id="about-me-title">Tentang Saya</h2>
+          <h3 class="section-title" id="about-me-title">Tentang Saya</h3>
           <div class="about-me-container card">
             <div class="about-me-box">
               <p id="about-me-text">
@@ -130,7 +169,7 @@
       </section>
 
       <section class="normal-section" id="skills">
-          <h2 class="section-title" id="skills-title">Keahlian</h2>        
+          <h3 class="section-title" id="skills-title">Keahlian</h3>        
           <div class="skill-container">
             <div class="skill-track">
               <div class="skill-box">
@@ -217,7 +256,7 @@
       </section>
       
       <section class="normal-section" id="education">
-        <h2 class="section-title" id="education-title">Pendidikan</h2>
+        <h3 class="section-title" id="education-title">Pendidikan</h3>
         <div class="education-container">
           <div class="education-box">
             <div class="education-title">
@@ -244,7 +283,7 @@
       </section>
 
       <section class="normal-section" id="certificates">
-        <h2 class="section-title" id="certificates-title">Sertifikat</h2>
+        <h3 class="section-title" id="certificates-title">Sertifikat</h3>
         <div class="certificate-container">
           <div class="certificate-box" 
                onclick="showPopup(
@@ -278,7 +317,7 @@
       </section>
 
       <section class="normal-section" id="project">
-        <h2 class="section-title" id="project-title">Proyek</h2>
+        <h3 class="section-title" id="project-title">Proyek</h3>
         <div class="project-container">
           <div class="project-box">
             <img src="asset/screenshot-proyek-1-website-portfolio.png" alt="Screenshot Proyek 1 Website Portofolio" loading="lazy" onclick="showPopup('<img src=\'asset/screenshot-proyek-1-website-portfolio.png\' alt=\'Screenshot Proyek 1 Website Portofolio\' style=\'width:100%; max-width:900px; margin-top:15px;\' loading=\'lazy\'>')">
@@ -321,7 +360,7 @@
       </section>
 
       <section class="normal-section" id="contact">
-        <h2 class="section-title" id="contact-title">Kontak</h2>
+        <h3 class="section-title" id="contact-title">Kontak</h3>
           <form id="form-contact">
             <div class="contact-container">
               <label for="inp-name" id="contact-name-label">Nama</label>
@@ -399,7 +438,85 @@
     </footer>
 
     <script src="script.js" defer></script>
-
     <script src="contact.js" defer></script>
+    
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Faris Adillah Yufiansyah",
+      "alternateName": "Faris AY",
+      "jobTitle": "Fullstack Developer",
+      "url": "https://faynim.github.io",
+      "image": "https://faynim.github.io/FAY-Developer.webp",
+      "sameAs": [
+        "https://www.linkedin.com/in/faris-ay",
+        "https://www.github.com/faynim",
+        "https://www.instagram.com/faris.a.y",
+        "https://www.threads.net/@faris.a.y"
+      ],
+      "knowsAbout": [
+        "JavaScript", "PHP", "MySQL", "HTML", "CSS", "Node.js", "TypeScript", "Git", "Bootstrap", "jQuery", "C++", "AI Development", "IoT"
+      ],
+      "nationality": "Indonesian",
+      "homeLocation": {
+        "@type": "Place",
+        "name": "Surabaya, Indonesia"
+      },
+      "alumniOf": [
+        {
+          "@type": "EducationalOrganization",
+          "name": "SMK Negeri 1 Surabaya"
+        },
+        {
+          "@type": "EducationalOrganization",
+          "name": "SMP Negeri 6 Surabaya"
+        },
+        {
+          "@type": "EducationalOrganization",
+          "name": "SD Muhammadiyah 18 Surabaya"
+        }
+      ],
+      "hasCredential": [
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Responsive Web Design Certification",
+          "credentialCategory": "certificate",
+          "issuedBy": {
+            "@type": "Organization",
+            "name": "FreeCodeCamp"
+          },
+          "dateCreated": "2025"
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Belajar Dasar AI",
+          "credentialCategory": "certificate",
+          "issuedBy": {
+            "@type": "Organization",
+            "name": "Dicoding"
+          },
+          "dateCreated": "2025"
+        }
+      ]
+    }
+    </script>
+    
+    <!-- Website Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Faris AY Portfolio",
+      "url": "https://faynim.github.io",
+      "description": "Portfolio website of Faris AY, a fullstack developer from Indonesia specializing in AI and modern web technologies",
+      "author": {
+        "@type": "Person",
+        "name": "Faris Adillah Yufiansyah"
+      },
+      "inLanguage": ["id", "en"]
+    }
+    </script>
   </body>
 </html>
