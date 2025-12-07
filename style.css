@@ -762,12 +762,9 @@ footer p {
     display: flex;
   }
   
-  /* Mobile responsive for logo text */
-  header .logo-text,
   header .nav-logo-text {
     font-size: 16px;
   }
-
 
   .section-title,
   h3.section-title {
