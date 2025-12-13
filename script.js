@@ -140,7 +140,7 @@ async function loadLanguageData() {
             throw new Error('Gagal memuat file lang.json');
         }
         langData = await response.json();
-        console.log('Data bahasa berhasil dimuat:', langData);
+        console.log('Data bahasa berhasil dimuat');
     } catch (error) {
         console.error('Error memuat data bahasa:', error);
     }
@@ -154,12 +154,141 @@ async function loadCertificatesData() {
             throw new Error('Gagal memuat file certificates.json');
         }
         certificatesData = await response.json();
-        console.log('Data sertifikat berhasil dimuat:', certificatesData);
+        console.log('Data sertifikat berhasil dimuat');
         renderCertificates();
     } catch (error) {
         console.error('Error memuat data sertifikat:', error);
         renderFallbackCertificates();
     }
+}
+
+// === Dynamic Projects Loading ===
+let projectsData = null;
+
+async function loadProjectsData() {
+    try {
+        const response = await fetch('data/projects.json');
+        if (!response.ok) {
+            throw new Error('Gagal memuat file projects.json');
+        }
+        projectsData = await response.json();
+        console.log('Data proyek berhasil dimuat');
+        renderProjects();
+    } catch (error) {
+        console.error('Error memuat data proyek:', error);
+        renderFallbackProjects();
+    }
+}
+
+function renderProjects() {
+    const container = document.getElementById('project-container');
+    if (!container || !projectsData) return;
+
+    container.innerHTML = '';
+
+    // Render existing projects
+    projectsData.forEach(project => {
+        const projectBox = document.createElement('div');
+        projectBox.className = 'project-box';
+        
+        const lang = currentLanguage.toLowerCase();
+        const name = project.name[lang] || project.name.id;
+        const description = project.description[lang] || project.description.id;
+        const alt = project.alt[lang] || project.alt.id;
+
+        // Generate tech stack HTML
+        const techStackHTML = project.techStack.map(tech => 
+            `<span class="tech-chip">${tech}</span>`
+        ).join('');
+
+        projectBox.innerHTML = `
+            <img src="${project.image}" alt="${alt}" loading="lazy" class="project-image">
+            <div class="project-info">
+                <h3>${name}</h3>
+                <p>${description}</p>
+                <div class="tech-stack">
+                    ${techStackHTML}
+                </div>
+                <button class="project-demo-btn" data-demo-url="${project.demoUrl}">${getTranslatedText('btn-demo')}</button>
+            </div>
+        `;
+
+        // Add event listeners for image popup and demo button
+        const projectImage = projectBox.querySelector('.project-image');
+        projectImage.addEventListener('click', () => {
+            showPopup(project.popupContent);
+        });
+
+        const demoButton = projectBox.querySelector('.project-demo-btn');
+        demoButton.addEventListener('click', () => {
+            demo(project.demoUrl);
+        });
+
+        container.appendChild(projectBox);
+    });
+
+    // Add "Coming Soon" box
+    const comingSoonBox = document.createElement('div');
+    comingSoonBox.className = 'project-box coming-soon';
+    comingSoonBox.innerHTML = `
+        <div class="coming-soon-overlay">
+            <i class="fa-solid fa-clock"></i>
+        </div>
+        <div class="project-info">
+            <h3>${getTranslatedText('coming-soon')}</h3>
+            <div class="tech-stack">
+                <!-- <span class="tech-chip">TBD</span> -->
+            </div>
+        </div>
+    `;
+    
+    container.appendChild(comingSoonBox);
+}
+
+function renderFallbackProjects() {
+    const container = document.getElementById('project-container');
+    if (!container) return;
+
+    // Fallback content if JSON fails to load
+    container.innerHTML = `
+        <div class="project-box">
+            <img src="asset/screenshot-proyek-1-website-portfolio.png" alt="Screenshot Proyek 1 Website Portofolio" loading="lazy" onclick="showPopup('<img src=\'asset/screenshot-proyek-1-website-portfolio.png\' alt=\'Screenshot Proyek 1 Website Portofolio\' style=\'width:100%; max-width:900px; margin-top:15px;\' loading=\'lazy\'>')">
+            <div class="project-info">
+                <h3 id="project-website-cv">Website CV</h3>
+                <p id="project-portfolio-desc">Website Portfolio Faris</p>
+                <div class="tech-stack">
+                    <span class="tech-chip">HTML</span>
+                    <span class="tech-chip">CSS</span>
+                    <span class="tech-chip">JavaScript</span>
+                </div>
+                <button onclick="demo('https://faynim.github.io')" id="btn-demo">Demo</button>
+            </div>
+        </div>
+        <div class="project-box">
+            <img src="asset/screenshot-proyek-2-landing-page-lynk-manager.png" alt="Screenshot Proyek 2 Landing Page Lynk Manager" loading="lazy" onclick="showPopup('<img src=\'asset/screenshot-proyek-2-landing-page-lynk-manager.png\' alt=\'Screenshot Proyek 2 Landing Page Lynk Manager\' style=\'width:100%; max-width:900px; margin-top:15px;\' loading=\'lazy\'>')">
+            <div class="project-info">
+                <h3 id="project-lynk-manager">Lynk Manager</h3>
+                <p id="project-portfolio-desc">Landing Page Lynk Manager</p>
+                <div class="tech-stack">
+                    <span class="tech-chip">HTML</span>
+                    <span class="tech-chip">CSS</span>
+                    <span class="tech-chip">JavaScript</span>
+                </div>
+                <button onclick="demo('https://lynk-manager-appscript.netlify.app')" id="btn-demo">Demo</button>
+            </div>
+        </div>
+        <div class="project-box coming-soon">
+            <div class="coming-soon-overlay">
+                <i class="fa-solid fa-clock"></i>
+            </div>
+            <div class="project-info">
+                <h3 id="coming-soon-3">Coming Soon</h3>
+                <div class="tech-stack">
+                    <!-- <span class="tech-chip">TBD</span> -->
+                </div>
+            </div>
+        </div>
+    `;
 }
 
 function renderCertificates() {
@@ -241,6 +370,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Load data
     loadLanguageData();
     loadCertificatesData();
+    loadProjectsData();
     
     const langContainer = document.querySelector('.lang-switch-container');
     const langButtons = document.querySelectorAll('.btn-switch-lang');
@@ -266,13 +396,23 @@ document.addEventListener('DOMContentLoaded', function() {
             currentLanguage = newLang.toLowerCase();
             switchLanguage(newLang);
             
-            // Re-render certificates with new language
+            // Re-render certificates and projects with new language
             if (certificatesData) {
                 renderCertificates();
+            }
+            if (projectsData) {
+                renderProjects();
             }
         });
     });
 });
+
+function getTranslatedText(key) {
+    if (!langData || !langData[currentLanguage.toUpperCase()]) {
+        return key; // fallback to key if no translation available
+    }
+    return langData[currentLanguage.toUpperCase()][key] || key;
+}
 
 function switchLanguage(lang) {
     // console.log('Mengganti ke bahasa:', lang);

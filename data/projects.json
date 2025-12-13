@@ -1,0 +1,40 @@
+[
+  {
+    "id": "website-portfolio",
+    "name": {
+      "id": "Website CV",
+      "en": "CV Website"
+    },
+    "description": {
+      "id": "Website Portfolio Faris",
+      "en": "Faris Portfolio Website"
+    },
+    "techStack": ["HTML", "CSS", "JavaScript"],
+    "demoUrl": "https://faynim.github.io",
+    "image": "asset/screenshot-proyek-1-website-portfolio.png",
+    "alt": {
+      "id": "Screenshot Proyek 1 Website Portofolio",
+      "en": "Screenshot Project 1 Portfolio Website"
+    },
+    "popupContent": "<img src='asset/screenshot-proyek-1-website-portfolio.png' alt='Screenshot Proyek 1 Website Portofolio' style='width:100%; max-width:900px; margin-top:15px;' loading='lazy'>"
+  },
+  {
+    "id": "lynk-manager",
+    "name": {
+      "id": "Lynk Manager",
+      "en": "Lynk Manager"
+    },
+    "description": {
+      "id": "Landing Page Lynk Manager",
+      "en": "Lynk Manager Landing Page"
+    },
+    "techStack": ["HTML", "CSS", "JavaScript"],
+    "demoUrl": "https://lynk-manager-appscript.netlify.app",
+    "image": "asset/screenshot-proyek-2-landing-page-lynk-manager.png",
+    "alt": {
+      "id": "Screenshot Proyek 2 Landing Page Lynk Manager",
+      "en": "Screenshot Project 2 Lynk Manager Landing Page"
+    },
+    "popupContent": "<img src='asset/screenshot-proyek-2-landing-page-lynk-manager.png' alt='Screenshot Proyek 2 Landing Page Lynk Manager' style='width:100%; max-width:900px; margin-top:15px;' loading='lazy'>"
+  }
+]
