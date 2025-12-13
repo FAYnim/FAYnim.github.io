@@ -130,6 +130,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // === Fitur Multi Language ===
 let langData = null;
+let certificatesData = null;
+let currentLanguage = 'id';
 
 async function loadLanguageData() {
     try {
@@ -144,9 +146,101 @@ async function loadLanguageData() {
     }
 }
 
+// === Dynamic Certificates Loading ===
+async function loadCertificatesData() {
+    try {
+        const response = await fetch('data/certificates.json');
+        if (!response.ok) {
+            throw new Error('Gagal memuat file certificates.json');
+        }
+        certificatesData = await response.json();
+        console.log('Data sertifikat berhasil dimuat:', certificatesData);
+        renderCertificates();
+    } catch (error) {
+        console.error('Error memuat data sertifikat:', error);
+        renderFallbackCertificates();
+    }
+}
+
+function renderCertificates() {
+    const container = document.getElementById('certificate-container');
+    if (!container || !certificatesData) return;
+
+    container.innerHTML = '';
+
+    // Render existing certificates
+    certificatesData.forEach(cert => {
+        const certBox = document.createElement('div');
+        certBox.className = 'certificate-box';
+        
+        const lang = currentLanguage.toLowerCase();
+        const title = cert.title[lang] || cert.title.id;
+        const description = cert.description[lang] || cert.description.id;
+        const alt = cert.alt[lang] || cert.alt.id;
+
+        certBox.onclick = () => showPopup(cert.popupContent);
+
+        certBox.innerHTML = `
+            <img src="${cert.image}" alt="${alt}" class="cert-thumbnail" loading="lazy">
+            <div class="certificate-info">
+                <h3>${title}</h3>
+                <p>${description}</p>
+            </div>
+        `;
+
+        container.appendChild(certBox);
+    });
+
+    // Add "Coming Soon" box
+    const comingSoonBox = document.createElement('div');
+    comingSoonBox.className = 'certificate-box coming-soon';
+    comingSoonBox.innerHTML = `
+        <div class="coming-soon-overlay">
+            <i class="fa-solid fa-plus"></i>
+        </div>
+        <div class="certificate-info">
+            <h3 id="coming-soon">Coming Soon</h3>
+        </div>
+    `;
+    
+    container.appendChild(comingSoonBox);
+}
+
+function renderFallbackCertificates() {
+    const container = document.getElementById('certificate-container');
+    if (!container) return;
+
+    // Fallback content if JSON fails to load
+    container.innerHTML = `
+        <div class="certificate-box" onclick="showPopup('<img src=\\'asset/certificate-responsive-web-design-faris-adilllah-yufiansyah.png\\' alt=\\'Sertifikat Responsive Web Design\\' style=\\'width:100%; max-width:700px; margin-top:15px;\\' loading=\\'lazy\\'>')">
+            <img src="asset/certificate-responsive-web-design-faris-adilllah-yufiansyah.png" alt="Sertifikat Responsive Web Design" class="cert-thumbnail" loading="lazy">
+            <div class="certificate-info">
+                <h3>Responsive Web Design</h3>
+                <p>FreeCodeCamp - 2025</p>
+            </div>
+        </div>
+        <div class="certificate-box" onclick="showPopup('<img src=\\'asset/certificate-belajar-dasar-ai-by-dicoding-faris-adillah-yufiansyah.png\\' alt=\\'Sertifikat Belajar Dasar AI\\' style=\\'width:100%; max-width:700px; margin-top:15px;\\' loading=\\'lazy\\'>')">
+            <img src="asset/certificate-belajar-dasar-ai-by-dicoding-faris-adillah-yufiansyah.png" alt="Sertifikat Belajar Dasar AI" class="cert-thumbnail" loading="lazy">
+            <div class="certificate-info">
+                <h3>Belajar Dasar AI</h3>
+                <p>Dicoding - 2025</p>
+            </div>
+        </div>
+        <div class="certificate-box coming-soon">
+            <div class="coming-soon-overlay">
+                <i class="fa-solid fa-plus"></i>
+            </div>
+            <div class="certificate-info">
+                <h3 id="coming-soon">Coming Soon</h3>
+            </div>
+        </div>
+    `;
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     // Load data
     loadLanguageData();
+    loadCertificatesData();
     
     const langContainer = document.querySelector('.lang-switch-container');
     const langButtons = document.querySelectorAll('.btn-switch-lang');
@@ -168,7 +262,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 langContainer.classList.remove('english');
             }
             
-            switchLanguage(isEnglish ? 'EN' : 'ID');
+            const newLang = isEnglish ? 'EN' : 'ID';
+            currentLanguage = newLang.toLowerCase();
+            switchLanguage(newLang);
+            
+            // Re-render certificates with new language
+            if (certificatesData) {
+                renderCertificates();
+            }
         });
     });
 });

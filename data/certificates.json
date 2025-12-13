@@ -1,0 +1,36 @@
+[
+  {
+    "id": 1,
+    "image": "asset/certificate-responsive-web-design-faris-adilllah-yufiansyah.png",
+    "title": {
+      "id": "Responsive Web Design",
+      "en": "Responsive Web Design"
+    },
+    "description": {
+      "id": "FreeCodeCamp - 2025",
+      "en": "FreeCodeCamp - 2025"
+    },
+    "alt": {
+      "id": "Sertifikat Responsive Web Design",
+      "en": "Responsive Web Design Certificate"
+    },
+    "popupContent": "<img src='asset/certificate-responsive-web-design-faris-adilllah-yufiansyah.png' alt='Sertifikat Responsive Web Design' style='width:100%; max-width:700px; margin-top:15px;' loading='lazy'>"
+  },
+  {
+    "id": 2,
+    "image": "asset/certificate-belajar-dasar-ai-by-dicoding-faris-adillah-yufiansyah.png",
+    "title": {
+      "id": "Belajar Dasar AI",
+      "en": "AI Fundamentals"
+    },
+    "description": {
+      "id": "Dicoding - 2025",
+      "en": "Dicoding - 2025"
+    },
+    "alt": {
+      "id": "Sertifikat Belajar Dasar AI",
+      "en": "AI Fundamentals Certificate"
+    },
+    "popupContent": "<img src='asset/certificate-belajar-dasar-ai-by-dicoding-faris-adillah-yufiansyah.png' alt='Sertifikat Belajar Dasar AI' style='width:100%; max-width:700px; margin-top:15px;' loading='lazy'>"
+  }
+]
